@@ -2,18 +2,18 @@
   {
     "path": "posts/welcome/",
     "title": "Welcome to Jeff's Journal",
-    "description": "Welcome to our new blog, Jeff's Journal. We hope you enjoy \nreading what we have to say!",
+    "description": "Welcome to my new blog, Jeff's Journal. We hope you enjoy \nreading what we have to say!",
     "author": [
       {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
+        "name": "Jeff Asselin",
+        "url": "https://jeffrey9.netlify.app/welcome_post"
       }
     ],
     "date": "2021-01-18",
     "categories": [],
     "contents": "\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-01-18T11:13:32-05:00",
+    "last_modified": "2021-01-26T09:10:17-05:00",
     "input_file": "welcome.utf8.md"
   }
 ]
