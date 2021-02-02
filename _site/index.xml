@@ -7,7 +7,15 @@
     <description>Jeff's Journal
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Jeff's Journal - Declaration of Existence</title>
+      <dc:creator>Jeff Asselin</dc:creator>
+      <link>https://jeffrey9.netlify.app/posts/2021-02-02-jeffs-journal-declaration-of-existence</link>
+      <description>My first real post.</description>
+      <guid>https://jeffrey9.netlify.app/posts/2021-02-02-jeffs-journal-declaration-of-existence</guid>
+      <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Welcome to Jeff's Journal</title>
       <dc:creator>Jeff Asselin</dc:creator>

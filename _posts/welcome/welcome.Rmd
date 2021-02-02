@@ -1,8 +1,8 @@
 ---
 title: "Welcome to Jeff's Journal"
 description: |
-  Welcome to my new blog, Jeff's Journal. We hope you enjoy 
-  reading what we have to say!
+  Welcome to my new blog, Jeff's Journal. I hope you enjoy 
+  reading what I have to say!
 author:
   - name: Jeff Asselin 
     url: https://jeffrey9.netlify.app/welcome_post
