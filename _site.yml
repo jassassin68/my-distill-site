@@ -1,7 +1,7 @@
 name: "my-distill-site"
 title: "Jeff's Journal"
 description: |
-  Jeff's Journal
+  Posts
 output_dir: "_site"
 base_url: https://jeffrey9.netlify.app/
 navbar:
