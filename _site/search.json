@@ -12,15 +12,15 @@
       "path": "about_page.html",
       "title": "About Me",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\nBio\r\nJeff Asselin ’[INSERT REMAINING BIO HERE]\r\nExperience\r\nTechTarget | Senior Data Analyst | August 2017 - present\r\nStrategic Insight | Analyst | January 2016 - July 2017\r\nEducation\r\nNortheastern University | Boston, MA\r\nDual B.S. in Economics and Mathematics | September 2011 - December 2015\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-02-15T12:41:53-05:00"
+      "contents": "\r\n\r\n\r\n\r\nBio\r\nHi, my name is Jeff Asselin. I currently work as a data analyst at a company called TechTarget, based out of Newton, Massachusetts. I have extensive experience with ad-hoc data analyses in the digital experience space, particularly in the areas of web traffic, user engagement, and audience development, using tools such as Oracle SQL, Python, R, and Tableau, as well as developing experience with project management, data product management, data dashboard and reporting creation and maintenance, and data visualization. I am always looking to improve on best practices within these areas, and am especially interested in the emerging, changing, and improving landscape of data engineering and data product management.\r\nI wanted to start a blog mostly because I am inspired by the incredible content on other individuals’ and companies’ data blogs and hope to bring something to the conversation; I want to showcase what I have learned (academically, professionally, and by messier means), particularly in areas beyond my core competencies, and collaborate with other data practitioners wherever and whenever possible (reach out to me on Twitter if you are interested in a collaboration!), and figured my own space in the ether was the best path forward. Lastly, my hope is that by sharing my work I can help or inspire others following a similar journey.\r\nThis blog was created and will be maintained using RStudio and the distill R package; thank you to RStudio, the maintainers of distill, and the open-source community.\r\nExperience\r\nTechTarget | Senior Data Analyst | August 2017 - present\r\nStrategic Insight | Analyst | January 2016 - July 2017\r\nEducation\r\nNortheastern University | Boston, MA\r\nDual B.S. in Economics and Mathematics | September 2011 - December 2015\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-02-15T14:48:11-05:00"
     },
     {
       "path": "index.html",
       "title": "Jeff's Journal",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-02-15T12:54:43-05:00"
+      "last_modified": "2021-02-15T14:48:27-05:00"
     }
   ],
   "collections": ["posts/posts.json"]
