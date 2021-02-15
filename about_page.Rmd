@@ -1,5 +1,5 @@
 ---
-title: "Jeff Asselin"
+title: "About Me"
 links:
   - label: LinkedIn
     url: "https://www.linkedin.com/in/jeffreyasselin/"
@@ -15,7 +15,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r, echo = FALSE, fig.align = 'center', fig.show = 'hold', out.width = '40%'} 
+```{r, echo = FALSE, fig.align = 'center', fig.show = 'hold', out.width = '60%'} 
 knitr::include_graphics("./images/headshot_ja.jpg")  
 ```
 

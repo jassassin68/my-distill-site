@@ -10,17 +10,17 @@
     },
     {
       "path": "about_page.html",
-      "title": "Jeff Asselin",
+      "title": "About Me",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\nBio\r\nJeff Asselin ’[INSERT REMAINING BIO HERE]\r\nExperience\r\nTechTarget | Senior Data Analyst | August 2017 - present\r\nStrategic Insight | Analyst | January 2016 - July 2017\r\nEducation\r\nNortheastern University | Boston, MA\r\nDual B.S. in Economics and Mathematics | September 2011 - December 2015\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-02-15T12:36:30-05:00"
+      "last_modified": "2021-02-15T12:41:53-05:00"
     },
     {
       "path": "index.html",
       "title": "Jeff's Journal",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-02-15T12:39:21-05:00"
+      "last_modified": "2021-02-15T12:42:25-05:00"
     }
   ],
   "collections": ["posts/posts.json"]
