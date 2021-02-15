@@ -9,7 +9,7 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "About"
-      href: about.html
+      href: about_page.html
     - text: "Resume"
       href: resume.pdf
     - icon: fab fa-github
@@ -18,4 +18,5 @@ navbar:
       href: https://twitter.com/JeffreyAsselin9
     - icon: fab fa-linkedin
       href: https://www.linkedin.com/in/jeffreyasselin/
+  search: false
 output: distill::distill_article

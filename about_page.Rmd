@@ -1,0 +1,37 @@
+---
+title: "Jeff Asselin"
+links:
+  - label: LinkedIn
+    url: "https://www.linkedin.com/in/jeffreyasselin/"
+  - label: Twitter
+    url: "https://twitter.com/JeffreyAsselin9"
+  - label: GitHub
+    url: "https://github.com/jassassin68"
+output:
+  postcards::trestles
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, echo = FALSE, fig.align = 'center', fig.show = 'hold', out.width = '40%'} 
+knitr::include_graphics("./images/headshot_ja.jpg")  
+```
+
+ 
+## Bio
+
+Jeff Asselin '[INSERT REMAINING BIO HERE]
+
+## Experience
+
+**TechTarget** | Senior Data Analyst | August 2017 - present
+
+**Strategic Insight** | Analyst | January 2016 - July 2017
+
+## Education
+
+**Northeastern University** | Boston, MA
+
+Dual B.S. in Economics and Mathematics | September 2011 - December 2015
