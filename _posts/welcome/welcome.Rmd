@@ -5,7 +5,7 @@ description: |
   reading what I have to say!
 author:
   - name: Jeff Asselin 
-    url: https://jeffrey9.netlify.app/welcome_post
+    url: https://jeffreyasselin.netlify.app/welcome_post
     affiliation:
     affiliation_url: 
 date: 01-18-2021

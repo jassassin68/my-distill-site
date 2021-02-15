@@ -6,14 +6,14 @@
     "author": [
       {
         "name": "Jeff Asselin",
-        "url": "https://jeffrey9.netlify.app/declaration_of_existence"
+        "url": "https://jeffreyasselin.netlify.app/declaration_of_existence"
       }
     ],
     "date": "2021-02-02",
     "categories": [],
     "contents": "\r\nHi, my name is Jeff Asselin. I currently work as a data analyst at a company called TechTarget, based out of Newton, Massachusetts.\r\nI wanted to start a blog mostly because I am tired of (read: inspired by) reading a ton of awesome content on other data blogs; I want to showcase what I have learned (both academically and by messier means), particularly in areas beyond my core competencies, and collaborate with other data practitioners wherever and whenever possible (reach out to me on Twitter if you are looking to collab!). Lastly, my hope is that by sharing my work I can help or inspire others following a similar journey.\r\nAs a means of putting my goals and aspirations out into the world, I am planning to write about some sports analytics R projects, scripts, processes, and models I have developed. I am also hoping to write about data explorations in the areas of music, books, and pop culture, and possibly share things like book, movie, and TV reviews if I feel inspired.\r\nLastly, this blog was created and will be maintained using RStudio and the distill R package, thank you to RStudio, the maintainers of distill, and the open-source community.\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-02-02T17:34:15-05:00",
+    "last_modified": "2021-02-15T12:54:23-05:00",
     "input_file": {}
   },
   {
@@ -23,14 +23,14 @@
     "author": [
       {
         "name": "Jeff Asselin",
-        "url": "https://jeffrey9.netlify.app/welcome_post"
+        "url": "https://jeffreyasselin.netlify.app/welcome_post"
       }
     ],
     "date": "2021-01-18",
     "categories": [],
     "contents": "\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-02-08T11:39:46-05:00",
+    "last_modified": "2021-02-15T12:54:09-05:00",
     "input_file": {}
   }
 ]

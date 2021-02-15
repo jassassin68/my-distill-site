@@ -4,7 +4,7 @@ description: |
   Existence Proclamation.
 author:
   - name: Jeff Asselin
-    url: https://jeffrey9.netlify.app/declaration_of_existence
+    url: https://jeffreyasselin.netlify.app/declaration_of_existence
 date: 02-02-2021
 output:
   distill::distill_article:

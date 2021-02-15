@@ -3,7 +3,7 @@ title: "Jeff's Journal"
 description: |
   Posts
 output_dir: "_site"
-base_url: https://jeffrey9.netlify.app/
+base_url: https://jeffreyasselin.netlify.app/
 navbar:
   right:
     - text: "Home"
