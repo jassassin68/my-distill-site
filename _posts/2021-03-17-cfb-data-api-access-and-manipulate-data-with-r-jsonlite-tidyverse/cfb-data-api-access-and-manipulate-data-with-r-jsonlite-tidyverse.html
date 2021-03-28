@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
-  <link rel="alternate" type="application/rss+xml" href="https://jeffreyasselin.netlify.app/index.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -87,376 +86,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Jeff's Journal</title>
+  <title>College Football Data API with R</title>
+  
+  <meta property="description" itemprop="description" content="A fun introduction to accessing and manipulating data via the CollegeFootballData API with R, jsonlite, &amp; tidyverse"/>
   
   
-  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-03-17"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-03-17"/>
+  <meta name="article:author" content="Jeff Asselin"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Jeff&#39;s Journal"/>
+  <meta property="og:title" content="College Football Data API with R"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="A fun introduction to accessing and manipulating data via the CollegeFootballData API with R, jsonlite, &amp; tidyverse"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Jeff&#39;s Journal"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Jeff&#39;s Journal"/>
+  <meta property="twitter:title" content="College Football Data API with R"/>
+  <meta property="twitter:description" content="A fun introduction to accessing and manipulating data via the CollegeFootballData API with R, jsonlite, &amp; tidyverse"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["Jeff's Journal"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["College Football Data API with R"]},{"type":"character","attributes":{},"value":["A fun introduction to accessing and manipulating data via the CollegeFootballData API with R, jsonlite, & tidyverse\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Jeff Asselin"]},{"type":"character","attributes":{},"value":["https://jeffreyasselin.netlify.app/cfb_data_api_intro"]}]}]},{"type":"character","attributes":{},"value":["03-17-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
-  <!--radix_placeholder_navigation_in_header-->
-  <meta name="distill:offset" content=""/>
   
-  <script type="application/javascript">
-  
-    window.headroom_prevent_pin = false;
-  
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-  
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        tolerance: 5,
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-  
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-  
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-  
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/anchor-4.2.2/anchor.min.js","cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/bowser-1.9.3/bowser.min.js","cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/distill-2.2.21/template.v2.js","cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/figure-html5/unnamed-chunk-11-1.png","cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/jquery-1.11.3/jquery.min.js","cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/popper-2.6.0/popper.min.js","cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/tippy-6.2.7/tippy-bundle.umd.min.js","cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/tippy-6.2.7/tippy-light-border.css","cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/tippy-6.2.7/tippy.css","cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/tippy-6.2.7/tippy.umd.min.js","cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
-  
-  <style type="text/css">
-  
-  /* Theme (user-documented overrideables for nav appearance) */
-  
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #0F2E3D;
-    font-size: 15px;
-    font-weight: 300;
-  }
-  
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  .distill-site-nav a:hover {
-    color: white;
-  }
-  
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-  
-  .distill-site-header {
-  
-  }
-  
-  .distill-site-footer {
-  
-  }
-  
-  
-  /* Site Header */
-  
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-  
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-  
-  
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-  
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-  
-  .distill-site-header .title {
-    font-size: 18px;
-    min-width: 150px;
-  }
-  
-  .distill-site-header .logo {
-    padding: 0;
-  }
-  
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-  
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-  
-  
-  
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-  
-  
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-  
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-  
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-  
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-  
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-dropdown-active {
-    display: block;
-  }
-  
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-  
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-  
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-  
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative; min-height: 500px; }
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-  
-  /* Site Footer */
-  
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-  
-  /* Headroom */
-  
-  d-title {
-    padding-top: 6rem;
-  }
-  
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-  
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-  
-  .headroom--unpinned {
-    top: -100px;
-  }
-  
-  .headroom--pinned {
-    top: 0;
-  }
-  
-  /* adjust viewport for navbar height */
-  /* helps vertically center bootstrap (non-distill) content */
-  .min-vh-100 {
-    min-height: calc(100vh - 100px) !important;
-  }
-  
-  </style>
-  
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+  <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
   
@@ -1772,259 +1434,248 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
   
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/popper-2.6.0/popper.min.js"></script>
+  <link href="cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Jeff's Journal","authors":[]}
+{"title":"College Football Data API with R","description":"A fun introduction to accessing and manipulating data via the CollegeFootballData API with R, jsonlite, & tidyverse","authors":[{"author":"Jeff Asselin","authorURL":"https://jeffreyasselin.netlify.app/cfb_data_api_intro","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-03-17T00:00:00.000-04:00","citationText":"Asselin, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">Jeff's Journal</a>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="about_page.html">About</a>
-<a href="resume.pdf">Resume</a>
-<a href="https://github.com/jassassin68">
-<i class="fab fa-github" aria-hidden="true"></i>
-</a>
-<a href="https://twitter.com/JeffreyAsselin9">
-<i class="fab fa-twitter" aria-hidden="true"></i>
-</a>
-<a href="https://www.linkedin.com/in/jeffreyasselin/">
-<i class="fab fa-linkedin" aria-hidden="true"></i>
-</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).load(function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-apply-limit l-page">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Jeff&#39;s Journal">Jeff's Journal</h1>
-<a href="posts/2021-03-17-cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">March 17, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Jeff Asselin</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2021-03-17-cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse/cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/figure-html5/unnamed-chunk-11-1.png"/>
-</div>
-<div class="description">
-<h2>College Football Data API with R</h2>
-<div class="dt-tags"></div>
-<p>A fun introduction to accessing and manipulating data via the CollegeFootballData API with R, jsonlite, &amp; tidyverse</p>
-</div>
-</a>
-<a href="posts/2021-02-02-jeffs-journal-declaration-of-existence/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Feb. 2, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Jeff Asselin</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Jeff's Journal - Declaration of Existence</h2>
-<div class="dt-tags"></div>
-<p>Existence Proclamation.</p>
-</div>
-</a>
-<a href="posts/welcome/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 18, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Jeff Asselin</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Welcome to Jeff's Journal</h2>
-<div class="dt-tags"></div>
-<p>Welcome to my new blog, Jeff's Journal. I hope you enjoy 
-reading what I have to say!</p>
-</div>
-</a>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Jeff’s Journal</h1>
+<h1>College Football Data API with R</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-
+<p><p>A fun introduction to accessing and manipulating data via the CollegeFootballData API with R, jsonlite, &amp; tidyverse</p></p>
 </div>
 
+<div class="d-byline">
+  Jeff Asselin <a href="https://jeffreyasselin.netlify.app/cfb_data_api_intro" class="uri">https://jeffreyasselin.netlify.app/cfb_data_api_intro</a> 
+  
+<br/>03-17-2021
+</div>
 
 <div class="d-article">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="introduction">Introduction</h1>
+<p>I love sports. The action, the historical moments, the athletic feats, the camaraderie. I have enjoyed sports since I was a child and I will continue to enjoy sports for my whole life.</p>
+<p>I also love working with data. I enjoy accessing it, wrangling it, transforming it, finding quirks in it, and making cool visualizations of it.</p>
+<p>For me, Sports Analytics is a marriage of these two loves.</p>
+<p>I have worked on various data analysis and data science projects in the past (NHL, NFL, NBA, PGA, etc.) which I hope to share on here one day, but I wanted to kick off my sports analytics writing journey with a new dataset. A fresh start.</p>
+<p>CollegeFootballData.com is an incredible resource for data discovery related to NCAA football. Kudos to the maintainer of this resource. They have an extensive API with great quick start guides and documentation.</p>
+<p>In this article, I will show you, an R user (specifically <a href="https://rstudio.com/">RStudio</a>), how to get started accessing data in R via this API and pull together a quick analysis and visualization.</p>
+<h1 id="install-packages">Install Packages</h1>
+<p>Start with installing and declaring the following packages:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://httr.r-lib.org/'>httr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://arxiv.org/abs/1403.2805'>jsonlite</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="construct-an-api-request-link">Construct an API request link</h1>
+<p>If you take a look at the <a href="https://api.collegefootballdata.com/">CollegeFootballData API documentation page</a>, you can find a list of all of the data accessible from this API and test out what a given request example will return.</p>
+<p>For this intro article, I am going to pull “talent composite rankings” data, by team, for the last three years (2018 through 2020).</p>
+<p>Navigating the API documentation page, scroll down to the “Teams” subhead, under which you will see a GET button with “/talent” next to it. Click the “GET” button, then the “Try it out” button in the drop down. If you type in a year and hit “EXECUTE”, you will see what was executed. Under “Responses” there is a subhead “Request URL”. This is the URL we will want to use.</p>
+<p>See below for storing your request URL as a variable:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>test_url</span> <span class='op'>&lt;-</span> <span class='st'>'[YOUR URL HERE]'</span>
+</code></pre>
+</div>
+</div>
+<p>My URL looks like so:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>test_url</span> <span class='op'>&lt;-</span> <span class='st'>'https://api.collegefootballdata.com/talent?year=2020'</span>
+</code></pre>
+</div>
+</div>
+<p>Next, we will test out our URL to see if we receive a good response from the API.</p>
+<h1 id="test-your-link">Test your link</h1>
+<p>Now that you have your URL, it’s time to send a request to the API. We can do this using the ‘fromJSON’ function from the jsonlite package, like so, and try to print the head of the response object:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>test_response</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span><span class='op'>(</span><span class='va'>test_url</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>test_response</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  year     school talent
+1 2020    Georgia 990.47
+2 2020    Alabama 985.86
+3 2020 Ohio State 976.48
+4 2020    Clemson 915.57
+5 2020      Texas 892.91
+6 2020  Texas A&amp;M 875.10</code></pre>
+</div>
+<p>Great! Now that we know our URL is returning a data object that is in a format we can work with, let’s write a function that allows us to pull this data for multiple years.</p>
+<h1 id="write-a-function">Write a function</h1>
+<p>For this data request, we will write a function that will take one year as input and return a dataframe with the data for that year. We will then map this function to a list of years, which will return a list of dataframes, which we will then combine into one dataframe.</p>
+<p>See function below:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Create function for pulling CFB team talent data, for all teams accessible from the API, </span>
+<span class='co'>#     by year, for a list of years</span>
+<span class='va'>cfbdata_talent_by_yr</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>year_no</span><span class='op'>)</span> <span class='op'>{</span>
+  
+  <span class='co'># Construct URL</span>
+  <span class='va'>api_request</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>'https://api.collegefootballdata.com/talent?year='</span>, <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>year_no</span><span class='op'>)</span><span class='op'>)</span>
+
+  <span class='co'># Store API response</span>
+  <span class='va'>api_object</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span><span class='op'>(</span><span class='va'>api_request</span><span class='op'>)</span>
+  
+  <span class='co'># Check if the response is empty; if not, continue, if so, skip to next year in list</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>is.list</a></span><span class='op'>(</span><span class='va'>api_object</span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>api_object</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'>next</span> <span class='op'>}</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>api_object</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'>next</span> <span class='op'>}</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>api_object</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>==</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'>next</span> <span class='op'>}</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>api_object</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span> <span class='op'>==</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'>next</span> <span class='op'>}</span>
+  
+  <span class='co'># Store manipulated dataframe in df</span>
+  <span class='va'>talent_df</span> <span class='op'>&lt;-</span> <span class='va'>api_object</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>rename</span><span class='op'>(</span>team <span class='op'>=</span> <span class='va'>school</span>, talent_rating <span class='op'>=</span> <span class='va'>talent</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>select</span><span class='op'>(</span><span class='va'>year</span>, <span class='va'>team</span>, <span class='va'>talent_rating</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='op'>)</span>
+  
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>talent_df</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<p>We are now ready to request data.</p>
+<h1 id="run-your-new-data-request">Run your new data request</h1>
+<p>You can run your function like so below in order pull team talent composite rankings for the 2018, 2019, and 2020 seasons, storing the result in a new dataframe called “team_talent_df”:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Apply function to list of years with map</span>
+<span class='va'>team_talent_df_list</span> <span class='op'>&lt;-</span> <span class='fu'>map</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2018</span>, <span class='fl'>2019</span>, <span class='fl'>2020</span><span class='op'>)</span>, <span class='va'>cfbdata_talent_by_yr</span><span class='op'>)</span>
+
+<span class='co'># Use bind_rows to combine into one dataframe</span>
+<span class='va'>team_talent_df</span> <span class='op'>&lt;-</span> <span class='fu'>bind_rows</span><span class='op'>(</span><span class='va'>team_talent_df_list</span>, .id <span class='op'>=</span> <span class='st'>'column_label'</span><span class='op'>)</span>
+
+<span class='co'># Get rid of new 'column_label' column, which we don't need</span>
+<span class='va'>team_talent_df</span> <span class='op'>&lt;-</span> <span class='va'>team_talent_df</span><span class='op'>[</span>,<span class='op'>!</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>team_talent_df</span><span class='op'>)</span> <span class='op'>==</span> <span class='st'>'column_label'</span><span class='op'>)</span><span class='op'>]</span>
+
+<span class='co'># print head of df</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>team_talent_df</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  year       team talent_rating
+1 2018 Ohio State        984.30
+2 2018    Alabama        978.54
+3 2018    Georgia        964.00
+4 2018        USC        933.65
+5 2018    Clemson        893.21
+6 2018        LSU        889.91</code></pre>
+</div>
+<p>Looks like our function worked and we have our data in a single dataframe! Let’s see if we can adjust the data at all to make it easier to work with before visualizing it.</p>
+<h1 id="explore-and-manipulate-data">Explore and Manipulate Data</h1>
+<p>Now that we have our dataset, let’s do some simple exploratory data analysis to check for any data quality issues. Below please find a handful of one-line function calls to check the data.</p>
+<p>The function call ‘dim(df)’ tells us the dimensions of the dataframe; it looks like we have 686 rows and 4 columns.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># print dim of df</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>team_talent_df</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 686   3</code></pre>
+</div>
+<p>The function call ‘summary(df)’ gives us a summary of each of the columns in the dataframe; it looks like even though ‘talent_rating’ is a number column, it is currently being stored as data type ‘character’:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># print summary of df</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>team_talent_df</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>      year          team           talent_rating     
+ Min.   :2018   Length:686         Length:686        
+ 1st Qu.:2018   Class :character   Class :character  
+ Median :2019   Mode  :character   Mode  :character  
+ Mean   :2019                                        
+ 3rd Qu.:2020                                        
+ Max.   :2020                                        </code></pre>
+</div>
+<p>Let’s adjust the data to set those to a numeric data type:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Change data type of "talent_rating" column from "character" to "numeric"</span>
+<span class='va'>team_talent_df</span><span class='op'>[</span><span class='st'>'talent_rating'</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>team_talent_df</span><span class='op'>[[</span><span class='st'>'talent_rating'</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>And if we re-run the ‘summary’ function we get some new info:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># print summary of df</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>team_talent_df</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>      year          team           talent_rating   
+ Min.   :2018   Length:686         Min.   :  3.30  
+ 1st Qu.:2018   Class :character   1st Qu.: 46.85  
+ Median :2019   Mode  :character   Median :344.01  
+ Mean   :2019                      Mean   :335.59  
+ 3rd Qu.:2020                      3rd Qu.:580.48  
+ Max.   :2020                      Max.   :990.47  </code></pre>
+</div>
+<p>Well done! Now that we have formatted the data to our liking and reviewed some summary statistics, let’s create a visualization.</p>
+<h1 id="visualize">Visualize</h1>
+<p>One thing I am interested in seeing is how “Talent Rating” has trended, over the three years that we pulled, for a select group of the top teams.</p>
+<p>Let’s visualize it:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Bar Chart displaying talent_rating for the teams Alabama, Ohio State, Clemson, Oklahoma, and LSU for the years 2018 through 2020</span>
+<span class='va'>team_talent_rankings_viz</span> <span class='op'>&lt;-</span> <span class='va'>team_talent_df</span> <span class='op'>%&gt;%</span>
+                              <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>team</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Alabama'</span>,<span class='st'>'Ohio State'</span>,<span class='st'>'Clemson'</span>, <span class='st'>'Oklahoma'</span>, <span class='st'>'LSU'</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+                              <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'>fct_reorder</span><span class='op'>(</span><span class='va'>team</span>, <span class='va'>talent_rating</span>, .desc <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>talent_rating</span>, 
+                                          group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span>, fill <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+                              <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>'identity'</span>,position<span class='op'>=</span><span class='st'>'dodge'</span><span class='op'>)</span> <span class='op'>+</span>
+                            <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>'Team'</span>,
+                                 y <span class='op'>=</span> <span class='st'>'Composite Talent Rating'</span>,
+                                 title <span class='op'>=</span> <span class='st'>'Composite Talent Rating - 2018 through 2020'</span>,
+                                 subtitle <span class='op'>=</span> <span class='st'>'Alabama, Ohio State, Clemson, Oklahoma, LSU Only'</span>,
+                                 legend <span class='op'>=</span> <span class='st'>'Year'</span><span class='op'>)</span> <span class='op'>+</span> 
+                            <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guides.html'>guides</a></span><span class='op'>(</span>fill<span class='op'>=</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guide_legend.html'>guide_legend</a></span><span class='op'>(</span>title<span class='op'>=</span><span class='st'>'Year'</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+                             <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>team_talent_rankings_viz</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<p>Lastly, let’s write up some observations.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>In this article I showed you how to test pulling data directly from an open-source API, write a function to do so more efficiently, explore, manipulate, and adjust data to fit your needs, and develop a clear and concise data visualization from that data.</p>
+<p>The “Composite Talent Ratings” for the top teams should come as little surprise: Alabama is far and away the most talented team year in and year out, and we can see that this was the case for the three years we pulled. Ohio State is also a storied program and has had the talent to match up with Alabama the last three years, while Clemson, LSU, and Oklahoma, although certainly highly talented, see more variability year-to-year when it comes to their “Talent Ratings”.</p>
+<p>There is plenty more you could do with this data, from correlating talent ratings with end-of-season outcomes or week-to-week win probabilities, to understanding how individual players contribute to this rating and if injuries could have major mid-season impacts, as well as many other potential data discoveries.</p>
+<p>My hope is for you to use this introduction to dig into the data and explore further; please tweet me @<a href="https://twitter.com/JeffreyAsselin9">JeffreyAsselin9</a> with your analyses or any questions, I would love to help out and cheer you on!</p>
+<p>Thanks again to the maintainers of CollegeFootballData.com and RStudio. Happy Coding!</p>
+<hr />
+<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
+<p>Learn more about using Distill at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

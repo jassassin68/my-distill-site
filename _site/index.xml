@@ -7,7 +7,16 @@
     <description>Posts
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 02 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>College Football Data API with R</title>
+      <dc:creator>Jeff Asselin</dc:creator>
+      <link>https://jeffreyasselin.netlify.app/posts/2021-03-17-cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse</link>
+      <description>A fun introduction to accessing and manipulating data via the CollegeFootballData API with R, jsonlite, &amp; tidyverse</description>
+      <guid>https://jeffreyasselin.netlify.app/posts/2021-03-17-cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse</guid>
+      <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jeffreyasselin.netlify.app/posts/2021-03-17-cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse/cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/figure-html5/unnamed-chunk-11-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Jeff's Journal - Declaration of Existence</title>
       <dc:creator>Jeff Asselin</dc:creator>
