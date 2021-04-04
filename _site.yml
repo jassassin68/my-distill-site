@@ -4,6 +4,11 @@ description: |
   Posts
 output_dir: "_site"
 base_url: https://jeffreyasselin.netlify.app/
+collections:
+  posts:
+    categories: true
+    categories_metadata: true
+    authors_metadata: true
 navbar:
   right:
     - text: "Home"

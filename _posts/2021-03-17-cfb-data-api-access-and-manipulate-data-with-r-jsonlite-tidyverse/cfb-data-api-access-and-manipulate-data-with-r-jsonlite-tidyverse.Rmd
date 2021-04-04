@@ -3,9 +3,12 @@ title: "College Football Data API with R"
 description: |
   A fun introduction to accessing and manipulating data via the CollegeFootballData API with R, jsonlite, & tidyverse
 author:
-  - name: Jeff Asselin
-    url: https://jeffreyasselin.netlify.app/cfb_data_api_intro
+  - name: "Jeff Asselin"
+    url: https://github.com/jassassin68/
 date: 03-17-2021
+categories:
+  - r
+  - sports
 output:
   distill::distill_article:
     self_contained: false
@@ -61,14 +64,28 @@ test_url <- 'https://api.collegefootballdata.com/talent?year=2020'
 
 Next, we will test out our URL to see if we receive a good response from the API.
 
+### ** Update: As of April 1st, 2021 the CFBD API requires an authentication key in order to access data. The steps to access data have changed slightly, the first step being getting a key [here](https://collegefootballdata.com/key). Then bring your key into the script like so below:
+```{r, echo=TRUE}
+token <- paste0('Bearer ', '[YOUR TOKEN HERE]')
+```
+### Rest of the steps updated below. **
+
 # Test your link
 
-Now that you have your URL, it's time to send a request to the API. We can do this using the 'fromJSON' function from the jsonlite package, like so, and try to print the head of the response object:
+Now that you have your URL, it's time to send a request to the API. We can do this using the 'fromJSON' function from the jsonlite package, after constructing your request with your auth token, like so below, and try to print the head of the response object:
+
+```{r, echo=FALSE}
+token = "Bearer 8IGzPGhY+Bs5xKhAuhRaCUpHxYCVQYvCn4nPHAU3aYqmxZbGwhI+RGO0vhhsjqW1"
+```
 
 ```{r, echo=TRUE}
-test_response <- jsonlite::fromJSON(test_url)
-
-print(head(test_response))
+# API request
+req <- httr::GET(test_url, httr::add_headers(Authorization = token))
+# Construct JSON
+json <- httr::content(req, as = "text")
+# Translate JSON
+test_resp <- fromJSON(json)
+print(head(test_resp))
 ```
 
 Great! Now that we know our URL is returning a data object that is in a format we can work with, let's write a function that allows us to pull this data for multiple years.
@@ -89,7 +106,9 @@ cfbdata_talent_by_yr <- function(year_no) {
   api_request <- paste0('https://api.collegefootballdata.com/talent?year=', as.character(year_no))
 
   # Store API response
-  api_object <- jsonlite::fromJSON(api_request)
+  req <- httr::GET(api_request, httr::add_headers(Authorization = token))
+  json <- httr::content(req, as = "text")
+  api_object <- jsonlite::fromJSON(json)
   
   # Check if the response is empty; if not, continue, if so, skip to next year in list
   if (is.list(api_object) & length(api_object) == 0) { next }
@@ -168,19 +187,20 @@ One thing I am interested in seeing is how "Talent Rating" has trended, over the
 Let's visualize it:
 
 ```{r, echo=TRUE}
-# Bar Chart displaying talent_rating for the teams Alabama, Ohio State, Clemson, Oklahoma, and LSU for the years 2018 through 2020
+# Bar Chart displaying talent_rating for the teams 
+#   Alabama, Ohio State, Clemson, Oklahoma, and LSU for the years 2018 through 2020
 team_talent_rankings_viz <- team_talent_df %>%
-                              filter(team %in% c('Alabama','Ohio State','Clemson', 'Oklahoma', 'LSU')) %>%
-                              ggplot(aes(x = fct_reorder(team, talent_rating, .desc = TRUE), y = talent_rating, 
-                                          group = factor(year), fill = factor(year))) + 
-                              geom_bar(stat='identity',position='dodge') +
-                            labs(x = 'Team',
-                                 y = 'Composite Talent Rating',
-                                 title = 'Composite Talent Rating - 2018 through 2020',
-                                 subtitle = 'Alabama, Ohio State, Clemson, Oklahoma, LSU Only',
-                                 legend = 'Year') + 
-                            guides(fill=guide_legend(title='Year')) + 
-                             theme_classic()
+        filter(team %in% c('Alabama','Ohio State','Clemson', 'Oklahoma', 'LSU')) %>%
+        ggplot(aes(x = fct_reorder(team, talent_rating, .desc = TRUE), y = talent_rating, 
+                    group = factor(year), fill = factor(year))) + 
+        geom_bar(stat='identity',position='dodge') +
+      labs(x = 'Team',
+           y = 'Composite Talent Rating',
+           title = 'Composite Talent Rating - 2018 through 2020',
+           subtitle = 'Alabama, Ohio State, Clemson, Oklahoma, LSU Only',
+           legend = 'Year') + 
+      guides(fill=guide_legend(title='Year')) + 
+       theme_classic()
 
 print(team_talent_rankings_viz)
 ```

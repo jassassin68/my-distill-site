@@ -3,9 +3,11 @@ title: "Jeff's Journal - Declaration of Existence"
 description: |
   Existence Proclamation.
 author:
-  - name: Jeff Asselin
-    url: https://jeffreyasselin.netlify.app/declaration_of_existence
+  - name: "Jeff Asselin"
+    url: https://github.com/jassassin68/
 date: 02-02-2021
+categories:
+  - intro
 output:
   distill::distill_article:
     self_contained: false

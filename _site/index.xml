@@ -13,15 +13,18 @@
       <dc:creator>Jeff Asselin</dc:creator>
       <link>https://jeffreyasselin.netlify.app/posts/2021-03-17-cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse</link>
       <description>A fun introduction to accessing and manipulating data via the CollegeFootballData API with R, jsonlite, &amp; tidyverse</description>
+      <category>r</category>
+      <category>sports</category>
       <guid>https://jeffreyasselin.netlify.app/posts/2021-03-17-cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse</guid>
       <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://jeffreyasselin.netlify.app/posts/2021-03-17-cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse/cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/figure-html5/unnamed-chunk-11-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://jeffreyasselin.netlify.app/posts/2021-03-17-cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse/cfb-data-api-access-and-manipulate-data-with-r-jsonlite-tidyverse_files/figure-html5/unnamed-chunk-13-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Jeff's Journal - Declaration of Existence</title>
       <dc:creator>Jeff Asselin</dc:creator>
       <link>https://jeffreyasselin.netlify.app/posts/2021-02-02-jeffs-journal-declaration-of-existence</link>
       <description>Existence Proclamation.</description>
+      <category>intro</category>
       <guid>https://jeffreyasselin.netlify.app/posts/2021-02-02-jeffs-journal-declaration-of-existence</guid>
       <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
     </item>
@@ -31,6 +34,7 @@
       <link>https://jeffreyasselin.netlify.app/posts/welcome</link>
       <description>Welcome to my new blog, Jeff's Journal. I hope you enjoy 
 reading what I have to say!</description>
+      <category>intro</category>
       <guid>https://jeffreyasselin.netlify.app/posts/welcome</guid>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
     </item>

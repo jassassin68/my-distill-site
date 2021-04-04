@@ -4,11 +4,11 @@ description: |
   Welcome to my new blog, Jeff's Journal. I hope you enjoy 
   reading what I have to say!
 author:
-  - name: Jeff Asselin 
-    url: https://jeffreyasselin.netlify.app/welcome_post
-    affiliation:
-    affiliation_url: 
+  - name: "Jeff Asselin"
+    url: https://github.com/jassassin68/
 date: 01-18-2021
+categories:
+  - intro
 output:
   distill::distill_article:
     self_contained: false
