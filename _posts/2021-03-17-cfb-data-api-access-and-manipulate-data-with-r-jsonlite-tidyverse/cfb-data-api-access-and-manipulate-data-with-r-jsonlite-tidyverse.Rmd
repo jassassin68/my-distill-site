@@ -75,7 +75,7 @@ token <- paste0('Bearer ', '[YOUR TOKEN HERE]')
 Now that you have your URL, it's time to send a request to the API. We can do this using the 'fromJSON' function from the jsonlite package, after constructing your request with your auth token, like so below, and try to print the head of the response object:
 
 ```{r, echo=FALSE}
-token = "Bearer 8IGzPGhY+Bs5xKhAuhRaCUpHxYCVQYvCn4nPHAU3aYqmxZbGwhI+RGO0vhhsjqW1"
+token = readRDS("C:/Users/jasselin/GitHub files/secrets/cfbdata_secret.rds")
 ```
 
 ```{r, echo=TRUE}
