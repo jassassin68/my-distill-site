@@ -1,0 +1,3784 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>The NFL Draft: An Analysis of Player Value Outcomes by Round and Position</title>
+  
+  <meta property="description" itemprop="description" content="A look at the NFL draft, how career &quot;value&quot; post-draft is distributed historically by round and position, and some interesting storylines to follow for the NFL&#39;s big night in 2021"/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-04-28"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-04-28"/>
+  <meta name="article:author" content="Jeff Asselin"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="The NFL Draft: An Analysis of Player Value Outcomes by Round and Position"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="A look at the NFL draft, how career &quot;value&quot; post-draft is distributed historically by round and position, and some interesting storylines to follow for the NFL&#39;s big night in 2021"/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="The NFL Draft: An Analysis of Player Value Outcomes by Round and Position"/>
+  <meta property="twitter:description" content="A look at the NFL draft, how career &quot;value&quot; post-draft is distributed historically by round and position, and some interesting storylines to follow for the NFL&#39;s big night in 2021"/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["The NFL Draft: An Analysis of Player Value Outcomes by Round and Position"]},{"type":"character","attributes":{},"value":["A look at the NFL draft, how career \"value\" post-draft is distributed historically by round and position, and some interesting storylines to follow for the NFL's big night in 2021\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Jeff Asselin"]},{"type":"character","attributes":{},"value":["https://github.com/jassassin68/"]}]}]},{"type":"character","attributes":{},"value":["04-28-2021"]},{"type":"character","attributes":{},"value":["r","sports","nfl"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["nfl-draft-2021-analysis-round-position-outcomes_files/anchor-4.2.2/anchor.min.js","nfl-draft-2021-analysis-round-position-outcomes_files/bowser-1.9.3/bowser.min.js","nfl-draft-2021-analysis-round-position-outcomes_files/distill-2.2.21/template.v2.js","nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-11-1.png","nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-12-1.png","nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-3-1.png","nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-4-1.png","nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-5-1.png","nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-6-1.png","nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-7-1.png","nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-8-1.png","nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-9-1.png","nfl-draft-2021-analysis-round-position-outcomes_files/jquery-1.11.3/jquery.min.js","nfl-draft-2021-analysis-round-position-outcomes_files/popper-2.6.0/popper.min.js","nfl-draft-2021-analysis-round-position-outcomes_files/tippy-6.2.7/tippy-bundle.umd.min.js","nfl-draft-2021-analysis-round-position-outcomes_files/tippy-6.2.7/tippy-light-border.css","nfl-draft-2021-analysis-round-position-outcomes_files/tippy-6.2.7/tippy.css","nfl-draft-2021-analysis-round-position-outcomes_files/tippy-6.2.7/tippy.umd.min.js","nfl-draft-2021-analysis-round-position-outcomes_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+  
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+  
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+  
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+  
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+  
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+  
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  /* Tweak code blocks */
+  
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+  
+  d-article div.sourceCode {
+    background-color: white;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  d-article pre a {
+    border-bottom: none;
+  }
+  
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+  
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+  
+  d-article pre {
+    font-size: 14px;
+  }
+  
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for d-contents */
+  
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+  
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+  
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  
+  .d-contents li {
+    list-style-type: none
+  }
+  
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+  
+  .d-contents ul {
+    padding-left: 1em
+  }
+  
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+  
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+  
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+  
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+  
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+  
+  
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+  
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+  
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  /* Citations */
+  
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+  
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+  
+  /* Citation hover box */
+  
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+  
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Include appendix styles here so they can be overridden */
+  
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+  
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+  
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+  
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+  
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+  
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+  
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  d-appendix > * {
+    grid-column: text;
+  }
+  
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+  
+  /* Include footnote styles here so they can be overridden */
+  
+  d-footnote-list {
+    contain: layout style;
+  }
+  
+  d-footnote-list > * {
+    grid-column: text;
+  }
+  
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+  
+  
+  
+  /* Anchor.js */
+  
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+  
+  /* Styles for posts lists (not auto-injected) */
+  
+  
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+  
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+  
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+  
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+  
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+  
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+  
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+  
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+  
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+  
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+  
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+  
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+  
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  .posts-list img {
+    opacity: 1;
+  }
+  
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+  
+  .posts-more {
+    clear: both;
+  }
+  
+  
+  .posts-sidebar {
+    font-size: 16px;
+  }
+  
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+  
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+  
+  .categories li>a {
+    border-bottom: none;
+  }
+  
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .categories .active {
+    font-weight: 600;
+  }
+  
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  
+  
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+  
+  
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+  
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+  
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-contents').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="nfl-draft-2021-analysis-round-position-outcomes_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="nfl-draft-2021-analysis-round-position-outcomes_files/popper-2.6.0/popper.min.js"></script>
+  <link href="nfl-draft-2021-analysis-round-position-outcomes_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="nfl-draft-2021-analysis-round-position-outcomes_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="nfl-draft-2021-analysis-round-position-outcomes_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="nfl-draft-2021-analysis-round-position-outcomes_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="nfl-draft-2021-analysis-round-position-outcomes_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="nfl-draft-2021-analysis-round-position-outcomes_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="nfl-draft-2021-analysis-round-position-outcomes_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"The NFL Draft: An Analysis of Player Value Outcomes by Round and Position","description":"A look at the NFL draft, how career \"value\" post-draft is distributed historically by round and position, and some interesting storylines to follow for the NFL's big night in 2021","authors":[{"author":"Jeff Asselin","authorURL":"https://github.com/jassassin68/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-04-28T00:00:00.000-04:00","citationText":"Asselin, 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>The NFL Draft: An Analysis of Player Value Outcomes by Round and Position</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">r</div>
+<div class="dt=tag">sports</div>
+<div class="dt=tag">nfl</div>
+</div>
+<!--/radix_placeholder_categories-->
+<p><p>A look at the NFL draft, how career “value” post-draft is distributed historically by round and position, and some interesting storylines to follow for the NFL’s big night in 2021</p></p>
+</div>
+
+<div class="d-byline">
+  Jeff Asselin <a href="https://github.com/jassassin68/" class="uri">https://github.com/jassassin68/</a> 
+  
+<br/>04-28-2021
+</div>
+
+<div class="d-article">
+<h1 id="introduction">Introduction</h1>
+<p>The NFL draft is arguably the most exciting day of the NFL offseason for the league office, team organizations, players, and fans. The worst teams from the previous season have the most to gain (assuming they haven’t traded away their extremely valuable picks well before draft day, which is on April 29th this year), as well as the highest potential of missing out on a franchise-altering player if they don’t pick correctly; the best teams, although likely having lower potential value picks, need a strategy if they are going to maximize the output of their draft capital.</p>
+<p>A lot of analysis you will see leading up to draft day is related to scouting and analyzing how college players could measure up when they make the move to the pros, for the reasons I mentioned above: you want to know who has the best likelihood of succeeding in the NFL. The big questions this year go something like:</p>
+<ul>
+<li>Is Kyle Pitts, a TE, really worth a top 5 pick?</li>
+<li>Should Devonta Smith or Jaylen Waddle be the first Alabama wide receiver selected this year, and why?</li>
+<li>IS Mac Jones an NFL-caliber quarterback, and if so how high is his “ceiling”?</li>
+</ul>
+<p>Teams and commentators understandably heavily weight scouting, finding comparable current NFL players for highly touted college players, and general player evaluation in regard to the plan when it comes to draft day. That being said, we have plenty of historical data to understand player outcomes once they have entered the league, and there is a ton of information to gain from taking a post-hoc approach to understanding draft performance, how certain rounds or positions should be viewed with a risk-reward lens, and identifying strategies to improve your team’s stock where other teams may not have done their homework.</p>
+<p>I have not seen too much recent content on this type of analysis, which could just be getting drowned out by scouting reports, rumors, and trades, and everything else happening before Draft Day, which is understandable, but this type of analysis and content is important and should be a significant part of any Draft Day kit as well, so let’s get into it!</p>
+<p>Below I’ll share some ideas for understanding historical pick and positional value, explore past data to see if it can tell us anything about how teams should approach future drafts, and see if we can advise on any simple strategies teams could deploy that could help lead to better draft results.</p>
+<p>Always need to shout out someone in these posts: thanks to <a href="https://twitter.com/_pranavrajaram">Pranav Rajaram</a>, <a href="https://twitter.com/LeeSharpeNFL">Lee Sharpe</a>, and <a href="http://pro-football-reference.com/">Pro-Football-Reference</a> for your work on NFL data, and the folks at <a href="https://www.rstudio.com/">RStudio</a> for an amazing product.</p>
+<h1 id="load-libraries">Load Libraries</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rstudio/gt'>gt</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="read-in-your-data">Read in your data</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>player_av</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/pranavrajaram/nfldraft/main/pfravs.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="exploratory-visuals-and-tables">Exploratory Visuals and Tables</h1>
+<p>I have started with a scatterplot of all picks between 2000 and 2014, for all teams and positions, with pick number on the x-axis and career AV, also known as “approximate value” of a player for all games played in their career, on the y-axis, with a linear average line drawn through all picks.</p>
+<p>Looking at all picks in this simplified way, we can see that on average, the better the pick the higher the players career AV will be for this dataset.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># All Players - Scatterplot - Career AV versus Pick Number</span>
+<span class='va'>p_scatter</span> <span class='op'>&lt;-</span> <span class='va'>player_av</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>draft_year</span> <span class='op'>&gt;=</span> <span class='fl'>2000</span>, <span class='va'>draft_year</span> <span class='op'>&lt;=</span> <span class='fl'>2015</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>pick</span>, y<span class='op'>=</span><span class='va'>career_av</span>, color<span class='op'>=</span><span class='va'>pos_pfr</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method<span class='op'>=</span><span class='va'>lm</span> , color<span class='op'>=</span><span class='st'>"black"</span>, se<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>p_scatter</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<p>Next, I looked at the same dataset but instead of a scatterplot I viewed it as boxplots, grouped by draft round, which shows the distribution of Career AV within each round for the years 2000 through 2015, with the biggest outliers labeled for reference.</p>
+<p>This view puts in perspective the anomaly that is Tom Brady.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># All Players - Boxplot - Career AV Distribution - by Round</span>
+<span class='va'>p_box</span> <span class='op'>&lt;-</span> <span class='va'>player_av</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>draft_year</span> <span class='op'>&gt;=</span> <span class='fl'>2000</span>, <span class='va'>draft_year</span> <span class='op'>&lt;=</span> <span class='fl'>2015</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>career_av</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y<span class='op'>=</span><span class='va'>career_av</span>, x <span class='op'>=</span> <span class='va'>round</span>, group <span class='op'>=</span> <span class='va'>round</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_x_discrete</a></span><span class='op'>(</span>limits<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span>, labels<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_text</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>round</span>, label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'>between</span><span class='op'>(</span><span class='va'>career_av</span>,<span class='op'>-</span><span class='fl'>5.6</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/stats/IQR.html'>IQR</a></span><span class='op'>(</span><span class='va'>career_av</span><span class='op'>)</span>, <span class='fl'>5.6</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/stats/IQR.html'>IQR</a></span><span class='op'>(</span><span class='va'>career_av</span><span class='op'>)</span><span class='op'>)</span>, 
+                                                <span class='va'>player</span>,<span class='st'>''</span><span class='op'>)</span><span class='op'>)</span>, 
+            position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_dodge.html'>position_dodge</a></span><span class='op'>(</span>width<span class='op'>=</span><span class='fl'>0.75</span><span class='op'>)</span>,
+            hjust <span class='op'>=</span> <span class='op'>-</span><span class='fl'>.2</span>, size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>p_box</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>In a tabular view of the table, we can see some summary statistics around average and median Career AV per round, as well as average years as a starter, average Pro Bowls, and average years named All-Pro.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>by_round_av_stats</span> <span class='op'>&lt;-</span> <span class='va'>player_av</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>draft_year</span> <span class='op'>&gt;=</span> <span class='fl'>2000</span>, <span class='va'>draft_year</span> <span class='op'>&lt;=</span> <span class='fl'>2015</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>career_av</span>, <span class='fl'>0</span><span class='op'>)</span>,
+           games <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>games</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>add_count</span><span class='op'>(</span><span class='va'>player</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'>#  filter(career_av &gt;= 0) %&gt;%</span>
+    <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>round</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>summarise</span><span class='op'>(</span><span class='st'>'player count'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>,
+              <span class='st'>'career av avg'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>career_av</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span>,
+          <span class='co'>#    c_av_25th_tile = quantile(career_av, c(0.25)),</span>
+              <span class='st'>'career av median'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>career_av</span><span class='op'>)</span>,
+          <span class='co'>#    c_av_75th_tile = quantile(career_av, c(0.75)),</span>
+              <span class='st'>'avg years starter'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>years_starter</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span>,
+              <span class='st'>'avg pro bowls'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pro_bowl</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span>,
+              <span class='st'>'avg all pro'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>all_pro</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='va'>by_round_av_stats</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>gt_theme_538</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#dixpajmxqj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: transparent;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dixpajmxqj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dixpajmxqj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dixpajmxqj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dixpajmxqj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dixpajmxqj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dixpajmxqj .gt_col_heading {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dixpajmxqj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dixpajmxqj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dixpajmxqj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dixpajmxqj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dixpajmxqj .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dixpajmxqj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dixpajmxqj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dixpajmxqj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dixpajmxqj .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dixpajmxqj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#dixpajmxqj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dixpajmxqj .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#dixpajmxqj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dixpajmxqj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dixpajmxqj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dixpajmxqj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dixpajmxqj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dixpajmxqj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dixpajmxqj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dixpajmxqj .gt_sourcenote {
+  font-size: 12px;
+  padding: 4px;
+}
+
+#dixpajmxqj .gt_left {
+  text-align: left;
+}
+
+#dixpajmxqj .gt_center {
+  text-align: center;
+}
+
+#dixpajmxqj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dixpajmxqj .gt_font_normal {
+  font-weight: normal;
+}
+
+#dixpajmxqj .gt_font_bold {
+  font-weight: bold;
+}
+
+#dixpajmxqj .gt_font_italic {
+  font-style: italic;
+}
+
+#dixpajmxqj .gt_super {
+  font-size: 65%;
+}
+
+#dixpajmxqj .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="dixpajmxqj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">round</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">player count</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">career av avg</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">career av median</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg years starter</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg pro bowls</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg all pro</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_center">529</td>
+      <td class="gt_row gt_right">43.1</td>
+      <td class="gt_row gt_right">39</td>
+      <td class="gt_row gt_right">5.7</td>
+      <td class="gt_row gt_right">1.5</td>
+      <td class="gt_row gt_right">0.4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_center">514</td>
+      <td class="gt_row gt_right">27.7</td>
+      <td class="gt_row gt_right">23</td>
+      <td class="gt_row gt_right">3.8</td>
+      <td class="gt_row gt_right">0.5</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_center">563</td>
+      <td class="gt_row gt_right">18.1</td>
+      <td class="gt_row gt_right">11</td>
+      <td class="gt_row gt_right">2.3</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_center">597</td>
+      <td class="gt_row gt_right">14.2</td>
+      <td class="gt_row gt_right">8</td>
+      <td class="gt_row gt_right">1.7</td>
+      <td class="gt_row gt_right">0.2</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_center">584</td>
+      <td class="gt_row gt_right">9.8</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">1.2</td>
+      <td class="gt_row gt_right">0.1</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">6</td>
+      <td class="gt_row gt_center">633</td>
+      <td class="gt_row gt_right">7.4</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">0.8</td>
+      <td class="gt_row gt_right">0.1</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">7</td>
+      <td class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">759</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">5.9</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">1</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.6</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.0</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.0</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<p>Next, I looked at the same view, except instead of Career AV overall I calculated “Career AV per game played”, which normalizes AV to a per game average, which should allow for a better comparison regardless of where players are in their career progression.</p>
+<p>Andrew Luck and Patrick Willis stand out here, but make sense as outliers: they both retired near or at the height of their careers, so on a per game basis they retired with a very high “Career AV”, as opposed to other Hall of Fame-worthy players who likely play until their per game AV begins to decline.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># All Players - Boxplot - Career AV per Game Played Distribution - by Round</span>
+<span class='va'>p_pg_box</span> <span class='op'>&lt;-</span> <span class='va'>player_av</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>draft_year</span> <span class='op'>&gt;=</span> <span class='fl'>2000</span>, <span class='va'>draft_year</span> <span class='op'>&lt;=</span> <span class='fl'>2015</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>career_av</span>, <span class='fl'>0</span><span class='op'>)</span>,
+           games <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>games</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>career_av</span> <span class='op'>&gt;=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av_pg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>career_av</span> <span class='op'>/</span> <span class='va'>games</span>, <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av_pg <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>career_av_pg</span>,<span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y<span class='op'>=</span><span class='va'>career_av_pg</span>, x <span class='op'>=</span> <span class='va'>round</span>, group <span class='op'>=</span> <span class='va'>round</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_x_discrete</a></span><span class='op'>(</span>limits<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span>, labels<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_text</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>round</span>, label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'>between</span><span class='op'>(</span><span class='va'>career_av_pg</span>,<span class='op'>-</span><span class='fl'>3.25</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/stats/IQR.html'>IQR</a></span><span class='op'>(</span><span class='va'>career_av_pg</span><span class='op'>)</span>, <span class='fl'>3.25</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/stats/IQR.html'>IQR</a></span><span class='op'>(</span><span class='va'>career_av_pg</span><span class='op'>)</span><span class='op'>)</span>, 
+                                                <span class='va'>player</span>,<span class='st'>''</span><span class='op'>)</span><span class='op'>)</span>, 
+            position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_dodge.html'>position_dodge</a></span><span class='op'>(</span>width<span class='op'>=</span><span class='fl'>0.75</span><span class='op'>)</span>,
+            hjust <span class='op'>=</span> <span class='op'>-</span><span class='fl'>.2</span>, size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>p_pg_box</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<p>And the tabular view of the same summary statistics as above are below:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>by_round_av_pg_stats</span> <span class='op'>&lt;-</span> <span class='va'>player_av</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>draft_year</span> <span class='op'>&gt;=</span> <span class='fl'>2000</span>, <span class='va'>draft_year</span> <span class='op'>&lt;=</span> <span class='fl'>2015</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>career_av</span>, <span class='fl'>0</span><span class='op'>)</span>,
+           games <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>games</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>career_av</span> <span class='op'>&gt;=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av_pg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>career_av</span> <span class='op'>/</span> <span class='va'>games</span>, <span class='fl'>7</span><span class='op'>)</span>,
+           career_av_pg <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>career_av_pg</span>,<span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>add_count</span><span class='op'>(</span><span class='va'>player</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'>#  filter(career_av &gt;= 0) %&gt;%</span>
+    <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>round</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>summarise</span><span class='op'>(</span><span class='st'>'player count'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>,
+              <span class='st'>'career av per game avg'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>career_av_pg</span><span class='op'>)</span>,<span class='fl'>4</span><span class='op'>)</span>,
+          <span class='co'>#    c_av_25th_tile = quantile(career_av, c(0.25)),</span>
+              <span class='st'>'career av pg median'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>career_av_pg</span><span class='op'>)</span>,<span class='fl'>4</span><span class='op'>)</span>,
+          <span class='co'>#    c_av_75th_tile = quantile(career_av, c(0.75)),</span>
+              <span class='st'>'avg years starter'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>years_starter</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span>,
+              <span class='st'>'avg pro bowls'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pro_bowl</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span>,
+              <span class='st'>'avg all pro'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>all_pro</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='va'>by_round_av_pg_stats</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>gt_theme_538</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#nxtldzxlgx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: transparent;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nxtldzxlgx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nxtldzxlgx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nxtldzxlgx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nxtldzxlgx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nxtldzxlgx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nxtldzxlgx .gt_col_heading {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nxtldzxlgx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nxtldzxlgx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nxtldzxlgx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nxtldzxlgx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nxtldzxlgx .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nxtldzxlgx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nxtldzxlgx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nxtldzxlgx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nxtldzxlgx .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nxtldzxlgx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#nxtldzxlgx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nxtldzxlgx .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#nxtldzxlgx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nxtldzxlgx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nxtldzxlgx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nxtldzxlgx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nxtldzxlgx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nxtldzxlgx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#nxtldzxlgx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nxtldzxlgx .gt_sourcenote {
+  font-size: 12px;
+  padding: 4px;
+}
+
+#nxtldzxlgx .gt_left {
+  text-align: left;
+}
+
+#nxtldzxlgx .gt_center {
+  text-align: center;
+}
+
+#nxtldzxlgx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nxtldzxlgx .gt_font_normal {
+  font-weight: normal;
+}
+
+#nxtldzxlgx .gt_font_bold {
+  font-weight: bold;
+}
+
+#nxtldzxlgx .gt_font_italic {
+  font-style: italic;
+}
+
+#nxtldzxlgx .gt_super {
+  font-size: 65%;
+}
+
+#nxtldzxlgx .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="nxtldzxlgx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">round</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">player count</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">career av per game avg</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">career av pg median</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg years starter</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg pro bowls</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg all pro</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_center">529</td>
+      <td class="gt_row gt_right">0.3832</td>
+      <td class="gt_row gt_right">0.3696</td>
+      <td class="gt_row gt_right">5.7</td>
+      <td class="gt_row gt_right">1.5</td>
+      <td class="gt_row gt_right">0.4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_center">514</td>
+      <td class="gt_row gt_right">0.2840</td>
+      <td class="gt_row gt_right">0.2857</td>
+      <td class="gt_row gt_right">3.8</td>
+      <td class="gt_row gt_right">0.5</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_center">563</td>
+      <td class="gt_row gt_right">0.2151</td>
+      <td class="gt_row gt_right">0.2008</td>
+      <td class="gt_row gt_right">2.3</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_center">597</td>
+      <td class="gt_row gt_right">0.1773</td>
+      <td class="gt_row gt_right">0.1600</td>
+      <td class="gt_row gt_right">1.7</td>
+      <td class="gt_row gt_right">0.2</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_center">584</td>
+      <td class="gt_row gt_right">0.1321</td>
+      <td class="gt_row gt_right">0.1096</td>
+      <td class="gt_row gt_right">1.2</td>
+      <td class="gt_row gt_right">0.1</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">6</td>
+      <td class="gt_row gt_center">632</td>
+      <td class="gt_row gt_right">0.1088</td>
+      <td class="gt_row gt_right">0.0833</td>
+      <td class="gt_row gt_right">0.8</td>
+      <td class="gt_row gt_right">0.1</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">7</td>
+      <td class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">757</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.0927</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.0526</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.6</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.0</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.0</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<p>How about if we summarize by position? As you can see from the table below, positions with a proper sample and the highest ‘Approximate value’ per game are Tackle, Quarterback, Guard, and Center. This tells you that: * These positions are vital to the success of your football team * A team should heavily consider investing a significant amount of draft captial into these positions</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>by_pos_av_pg_stats</span> <span class='op'>&lt;-</span> <span class='va'>player_av</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>draft_year</span> <span class='op'>&gt;=</span> <span class='fl'>2000</span>, <span class='va'>draft_year</span> <span class='op'>&lt;=</span> <span class='fl'>2015</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>career_av</span>, <span class='fl'>0</span><span class='op'>)</span>,
+           games <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>games</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>career_av</span> <span class='op'>&gt;=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av_pg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>career_av</span> <span class='op'>/</span> <span class='va'>games</span>, <span class='fl'>7</span><span class='op'>)</span>,
+           career_av_pg <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>career_av_pg</span>,<span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>add_count</span><span class='op'>(</span><span class='va'>player</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'>#  filter(career_av &gt;= 0) %&gt;%</span>
+    <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>pos_pfr</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>summarise</span><span class='op'>(</span>player_count <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>,
+              career_av_per_game_avg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>career_av_pg</span><span class='op'>)</span>,<span class='fl'>4</span><span class='op'>)</span>,
+          <span class='co'>#    c_av_25th_tile = quantile(career_av, c(0.25)),</span>
+              <span class='st'>'career_av_pg_median'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>career_av_pg</span><span class='op'>)</span>,<span class='fl'>4</span><span class='op'>)</span>,
+          <span class='co'>#    c_av_75th_tile = quantile(career_av, c(0.75)),</span>
+              <span class='st'>'avg years starter'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>years_starter</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span>,
+              <span class='st'>'avg pro bowls'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pro_bowl</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span>,
+              <span class='st'>'avg all pro'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>all_pro</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>player_count</span> <span class='op'>&gt;=</span> <span class='fl'>12</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='va'>by_pos_av_pg_stats</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='fu'>desc</span><span class='op'>(</span><span class='va'>career_av_per_game_avg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>gt_theme_538</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#zaessfsnli .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: transparent;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zaessfsnli .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zaessfsnli .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zaessfsnli .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zaessfsnli .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zaessfsnli .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zaessfsnli .gt_col_heading {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zaessfsnli .gt_column_spanner_outer {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zaessfsnli .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zaessfsnli .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zaessfsnli .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zaessfsnli .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zaessfsnli .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zaessfsnli .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zaessfsnli .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zaessfsnli .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zaessfsnli .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#zaessfsnli .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zaessfsnli .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#zaessfsnli .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zaessfsnli .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zaessfsnli .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zaessfsnli .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zaessfsnli .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zaessfsnli .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#zaessfsnli .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zaessfsnli .gt_sourcenote {
+  font-size: 12px;
+  padding: 4px;
+}
+
+#zaessfsnli .gt_left {
+  text-align: left;
+}
+
+#zaessfsnli .gt_center {
+  text-align: center;
+}
+
+#zaessfsnli .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zaessfsnli .gt_font_normal {
+  font-weight: normal;
+}
+
+#zaessfsnli .gt_font_bold {
+  font-weight: bold;
+}
+
+#zaessfsnli .gt_font_italic {
+  font-style: italic;
+}
+
+#zaessfsnli .gt_super {
+  font-size: 65%;
+}
+
+#zaessfsnli .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="zaessfsnli" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">pos_pfr</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">player_count</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">career_av_per_game_avg</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">career_av_pg_median</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg years starter</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg pro bowls</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg all pro</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">T</td>
+      <td class="gt_row gt_center">317</td>
+      <td class="gt_row gt_right">0.2709</td>
+      <td class="gt_row gt_right">0.2667</td>
+      <td class="gt_row gt_right">3.1</td>
+      <td class="gt_row gt_right">0.4</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">QB</td>
+      <td class="gt_row gt_center">199</td>
+      <td class="gt_row gt_right">0.2533</td>
+      <td class="gt_row gt_right">0.2188</td>
+      <td class="gt_row gt_right">2.1</td>
+      <td class="gt_row gt_right">0.5</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">G</td>
+      <td class="gt_row gt_center">222</td>
+      <td class="gt_row gt_right">0.2366</td>
+      <td class="gt_row gt_right">0.2632</td>
+      <td class="gt_row gt_right">2.8</td>
+      <td class="gt_row gt_right">0.4</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">C</td>
+      <td class="gt_row gt_center">101</td>
+      <td class="gt_row gt_right">0.2231</td>
+      <td class="gt_row gt_right">0.2353</td>
+      <td class="gt_row gt_right">3.0</td>
+      <td class="gt_row gt_right">0.5</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">RB</td>
+      <td class="gt_row gt_center">339</td>
+      <td class="gt_row gt_right">0.2032</td>
+      <td class="gt_row gt_right">0.1727</td>
+      <td class="gt_row gt_right">1.4</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">LB</td>
+      <td class="gt_row gt_center">487</td>
+      <td class="gt_row gt_right">0.2014</td>
+      <td class="gt_row gt_right">0.1637</td>
+      <td class="gt_row gt_right">2.3</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">DT</td>
+      <td class="gt_row gt_center">328</td>
+      <td class="gt_row gt_right">0.1984</td>
+      <td class="gt_row gt_right">0.1818</td>
+      <td class="gt_row gt_right">2.3</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">DE</td>
+      <td class="gt_row gt_center">377</td>
+      <td class="gt_row gt_right">0.1954</td>
+      <td class="gt_row gt_right">0.1786</td>
+      <td class="gt_row gt_right">2.5</td>
+      <td class="gt_row gt_right">0.4</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">OLB</td>
+      <td class="gt_row gt_center">23</td>
+      <td class="gt_row gt_right">0.1909</td>
+      <td class="gt_row gt_right">0.1622</td>
+      <td class="gt_row gt_right">1.4</td>
+      <td class="gt_row gt_right">0.1</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">S</td>
+      <td class="gt_row gt_center">13</td>
+      <td class="gt_row gt_right">0.1748</td>
+      <td class="gt_row gt_right">0.1875</td>
+      <td class="gt_row gt_right">1.8</td>
+      <td class="gt_row gt_right">0.2</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">DB</td>
+      <td class="gt_row gt_center">780</td>
+      <td class="gt_row gt_right">0.1670</td>
+      <td class="gt_row gt_right">0.1429</td>
+      <td class="gt_row gt_right">2.1</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">WR</td>
+      <td class="gt_row gt_center">541</td>
+      <td class="gt_row gt_right">0.1647</td>
+      <td class="gt_row gt_right">0.1322</td>
+      <td class="gt_row gt_right">1.7</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">CB</td>
+      <td class="gt_row gt_center">30</td>
+      <td class="gt_row gt_right">0.1494</td>
+      <td class="gt_row gt_right">0.1429</td>
+      <td class="gt_row gt_right">1.2</td>
+      <td class="gt_row gt_right">0.2</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">OL</td>
+      <td class="gt_row gt_center">40</td>
+      <td class="gt_row gt_right">0.1123</td>
+      <td class="gt_row gt_right">0.0000</td>
+      <td class="gt_row gt_right">1.1</td>
+      <td class="gt_row gt_right">0.1</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">K</td>
+      <td class="gt_row gt_center">33</td>
+      <td class="gt_row gt_right">0.1050</td>
+      <td class="gt_row gt_right">0.1402</td>
+      <td class="gt_row gt_right">0.0</td>
+      <td class="gt_row gt_right">0.4</td>
+      <td class="gt_row gt_right">0.2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">TE</td>
+      <td class="gt_row gt_center">248</td>
+      <td class="gt_row gt_right">0.0968</td>
+      <td class="gt_row gt_right">0.0588</td>
+      <td class="gt_row gt_right">2.4</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">P</td>
+      <td class="gt_row gt_center">30</td>
+      <td class="gt_row gt_right">0.0924</td>
+      <td class="gt_row gt_right">0.1076</td>
+      <td class="gt_row gt_right">0.0</td>
+      <td class="gt_row gt_right">0.5</td>
+      <td class="gt_row gt_right">0.3</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">FB</td>
+      <td class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">42</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.0362</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.0198</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">1.5</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.0</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.0</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<p>What if there are differences in terms of ‘approximate value’ outcomes within positions AND by round? The table below yields a ton of information (showing only the top 35 combinations by AV per game), here are some highlights:</p>
+<ul>
+<li>A 1st round QB, on average, has the highest per game ‘approximate value’ out of any draft round and position combination, followed by 1st round Ts, 1st round LBs, and 1st round RBs. This is certainly part of the reason why we have seen a QB taken 1st overall 8 out of the last 12 years, and is what is expected to happen this year with Trevor Lawrence as the consensus projected #1 overall pick.</li>
+<li>A 2nd round T or a 2nd round QB on average have higher per game ‘approximate values’ than a 1st round DT, WR, DB, or DE; this means if you are selecting one of these positions in the 1st round you better be sure to have a strong conviction that the player you are selecting is not average and is an upside outlier. Without that conviction, you are better off selecting a player of a different position (again looking at Chase, Waddle, and Smith, all projected top 12 picks, can you be sure they will be worth it?)</li>
+<li>A 1st round TE is 23rd in ‘approximate value’ per game ranking by draft round and position, and on average has a lower AV per game than a Center selected in the 4th round or a 3rd round RB. This makes all of the buzz around Kyle Pitts, and the fact that he is expected to go top 5, even more crazy. Any team willing to take that risk must be seeing only incredible things from every other angle in their scouting report, potentially with a plan to use him at a different position or multiple positions. Removing the scouting information from the equation and only looking at outcomes, this looks like a huge risk and a disaster waiting to happen, which is part of what makes the draft so exciting.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>by_round_and_pos_av_pg_stats</span> <span class='op'>&lt;-</span> <span class='va'>player_av</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>draft_year</span> <span class='op'>&gt;=</span> <span class='fl'>2000</span>, <span class='va'>draft_year</span> <span class='op'>&lt;=</span> <span class='fl'>2015</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>career_av</span>, <span class='fl'>0</span><span class='op'>)</span>,
+           games <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>games</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>career_av</span> <span class='op'>&gt;=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>career_av_pg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>career_av</span> <span class='op'>/</span> <span class='va'>games</span>, <span class='fl'>7</span><span class='op'>)</span>,
+           career_av_pg <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>career_av_pg</span>,<span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>add_count</span><span class='op'>(</span><span class='va'>player</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>round</span>, <span class='va'>pos_pfr</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>summarise</span><span class='op'>(</span>player_count <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>,
+              career_av_per_game_avg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>career_av_pg</span><span class='op'>)</span>,<span class='fl'>4</span><span class='op'>)</span>,
+          <span class='co'>#    c_av_25th_tile = quantile(career_av, c(0.25)),</span>
+              career_av_pg_median <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>career_av_pg</span><span class='op'>)</span>,<span class='fl'>4</span><span class='op'>)</span>,
+          <span class='co'>#    c_av_75th_tile = quantile(career_av, c(0.75)),</span>
+              <span class='st'>'avg years starter'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>years_starter</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span>,
+              <span class='st'>'avg pro bowls'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pro_bowl</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span>,
+              <span class='st'>'avg all pro'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>all_pro</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>player_count</span> <span class='op'>&gt;=</span> <span class='fl'>12</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fl'>35</span><span class='op'>)</span>
+
+<span class='va'>by_round_and_pos_av_pg_stats</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='fu'>desc</span><span class='op'>(</span><span class='va'>career_av_pg_median</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>gt_theme_538</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#iswlsdtdai .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: transparent;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#iswlsdtdai .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iswlsdtdai .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#iswlsdtdai .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#iswlsdtdai .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iswlsdtdai .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iswlsdtdai .gt_col_heading {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#iswlsdtdai .gt_column_spanner_outer {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#iswlsdtdai .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#iswlsdtdai .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#iswlsdtdai .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#iswlsdtdai .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#iswlsdtdai .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#iswlsdtdai .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#iswlsdtdai .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#iswlsdtdai .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#iswlsdtdai .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#iswlsdtdai .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iswlsdtdai .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#iswlsdtdai .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iswlsdtdai .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#iswlsdtdai .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#iswlsdtdai .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iswlsdtdai .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iswlsdtdai .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#iswlsdtdai .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iswlsdtdai .gt_sourcenote {
+  font-size: 12px;
+  padding: 4px;
+}
+
+#iswlsdtdai .gt_left {
+  text-align: left;
+}
+
+#iswlsdtdai .gt_center {
+  text-align: center;
+}
+
+#iswlsdtdai .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#iswlsdtdai .gt_font_normal {
+  font-weight: normal;
+}
+
+#iswlsdtdai .gt_font_bold {
+  font-weight: bold;
+}
+
+#iswlsdtdai .gt_font_italic {
+  font-style: italic;
+}
+
+#iswlsdtdai .gt_super {
+  font-size: 65%;
+}
+
+#iswlsdtdai .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="iswlsdtdai" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">round</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">pos_pfr</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">player_count</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">career_av_per_game_avg</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">career_av_pg_median</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg years starter</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg pro bowls</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">avg all pro</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">QB</td>
+      <td class="gt_row gt_center">43</td>
+      <td class="gt_row gt_right">0.5173</td>
+      <td class="gt_row gt_right">0.5497</td>
+      <td class="gt_row gt_right">5.7</td>
+      <td class="gt_row gt_right">1.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">T</td>
+      <td class="gt_row gt_center">62</td>
+      <td class="gt_row gt_right">0.4406</td>
+      <td class="gt_row gt_right">0.4541</td>
+      <td class="gt_row gt_right">6.4</td>
+      <td class="gt_row gt_right">1.4</td>
+      <td class="gt_row gt_right">0.3</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">LB</td>
+      <td class="gt_row gt_center">50</td>
+      <td class="gt_row gt_right">0.4373</td>
+      <td class="gt_row gt_right">0.4239</td>
+      <td class="gt_row gt_right">6.2</td>
+      <td class="gt_row gt_right">2.4</td>
+      <td class="gt_row gt_right">0.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">RB</td>
+      <td class="gt_row gt_center">44</td>
+      <td class="gt_row gt_right">0.4283</td>
+      <td class="gt_row gt_right">0.4219</td>
+      <td class="gt_row gt_right">4.6</td>
+      <td class="gt_row gt_right">1.2</td>
+      <td class="gt_row gt_right">0.4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">G</td>
+      <td class="gt_row gt_center">17</td>
+      <td class="gt_row gt_right">0.4440</td>
+      <td class="gt_row gt_right">0.4167</td>
+      <td class="gt_row gt_right">6.8</td>
+      <td class="gt_row gt_right">2.6</td>
+      <td class="gt_row gt_right">0.8</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">T</td>
+      <td class="gt_row gt_center">43</td>
+      <td class="gt_row gt_right">0.3902</td>
+      <td class="gt_row gt_right">0.4069</td>
+      <td class="gt_row gt_right">4.7</td>
+      <td class="gt_row gt_right">0.4</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">QB</td>
+      <td class="gt_row gt_center">18</td>
+      <td class="gt_row gt_right">0.3516</td>
+      <td class="gt_row gt_right">0.3609</td>
+      <td class="gt_row gt_right">3.1</td>
+      <td class="gt_row gt_right">1.1</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">DT</td>
+      <td class="gt_row gt_center">49</td>
+      <td class="gt_row gt_right">0.3566</td>
+      <td class="gt_row gt_right">0.3590</td>
+      <td class="gt_row gt_right">5.6</td>
+      <td class="gt_row gt_right">1.1</td>
+      <td class="gt_row gt_right">0.4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">WR</td>
+      <td class="gt_row gt_center">70</td>
+      <td class="gt_row gt_right">0.3537</td>
+      <td class="gt_row gt_right">0.3540</td>
+      <td class="gt_row gt_right">4.8</td>
+      <td class="gt_row gt_right">1.2</td>
+      <td class="gt_row gt_right">0.3</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">C</td>
+      <td class="gt_row gt_center">12</td>
+      <td class="gt_row gt_right">0.3587</td>
+      <td class="gt_row gt_right">0.3515</td>
+      <td class="gt_row gt_right">7.1</td>
+      <td class="gt_row gt_right">0.9</td>
+      <td class="gt_row gt_right">0.2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">G</td>
+      <td class="gt_row gt_center">25</td>
+      <td class="gt_row gt_right">0.3492</td>
+      <td class="gt_row gt_right">0.3504</td>
+      <td class="gt_row gt_right">5.0</td>
+      <td class="gt_row gt_right">0.6</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">DE</td>
+      <td class="gt_row gt_center">68</td>
+      <td class="gt_row gt_right">0.3388</td>
+      <td class="gt_row gt_right">0.3387</td>
+      <td class="gt_row gt_right">5.4</td>
+      <td class="gt_row gt_right">1.3</td>
+      <td class="gt_row gt_right">0.4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">LB</td>
+      <td class="gt_row gt_center">70</td>
+      <td class="gt_row gt_right">0.3039</td>
+      <td class="gt_row gt_right">0.3228</td>
+      <td class="gt_row gt_right">4.2</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">DB</td>
+      <td class="gt_row gt_center">86</td>
+      <td class="gt_row gt_right">0.3231</td>
+      <td class="gt_row gt_right">0.3190</td>
+      <td class="gt_row gt_right">5.8</td>
+      <td class="gt_row gt_right">1.4</td>
+      <td class="gt_row gt_right">0.4</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_left">G</td>
+      <td class="gt_row gt_center">31</td>
+      <td class="gt_row gt_right">0.3085</td>
+      <td class="gt_row gt_right">0.3077</td>
+      <td class="gt_row gt_right">3.8</td>
+      <td class="gt_row gt_right">0.5</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_left">QB</td>
+      <td class="gt_row gt_center">20</td>
+      <td class="gt_row gt_right">0.2724</td>
+      <td class="gt_row gt_right">0.2990</td>
+      <td class="gt_row gt_right">1.6</td>
+      <td class="gt_row gt_right">0.5</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_left">T</td>
+      <td class="gt_row gt_center">40</td>
+      <td class="gt_row gt_right">0.2941</td>
+      <td class="gt_row gt_right">0.2964</td>
+      <td class="gt_row gt_right">3.7</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">RB</td>
+      <td class="gt_row gt_center">42</td>
+      <td class="gt_row gt_right">0.3054</td>
+      <td class="gt_row gt_right">0.2912</td>
+      <td class="gt_row gt_right">2.2</td>
+      <td class="gt_row gt_right">0.5</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_left">C</td>
+      <td class="gt_row gt_center">19</td>
+      <td class="gt_row gt_right">0.2735</td>
+      <td class="gt_row gt_right">0.2747</td>
+      <td class="gt_row gt_right">2.5</td>
+      <td class="gt_row gt_right">0.0</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">DB</td>
+      <td class="gt_row gt_center">103</td>
+      <td class="gt_row gt_right">0.2574</td>
+      <td class="gt_row gt_right">0.2727</td>
+      <td class="gt_row gt_right">4.1</td>
+      <td class="gt_row gt_right">0.4</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_left">RB</td>
+      <td class="gt_row gt_center">41</td>
+      <td class="gt_row gt_right">0.2633</td>
+      <td class="gt_row gt_right">0.2706</td>
+      <td class="gt_row gt_right">1.5</td>
+      <td class="gt_row gt_right">0.4</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">DT</td>
+      <td class="gt_row gt_center">35</td>
+      <td class="gt_row gt_right">0.2592</td>
+      <td class="gt_row gt_right">0.2531</td>
+      <td class="gt_row gt_right">3.5</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_left">TE</td>
+      <td class="gt_row gt_center">18</td>
+      <td class="gt_row gt_right">0.2411</td>
+      <td class="gt_row gt_right">0.2504</td>
+      <td class="gt_row gt_right">7.6</td>
+      <td class="gt_row gt_right">1.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">WR</td>
+      <td class="gt_row gt_center">71</td>
+      <td class="gt_row gt_right">0.2581</td>
+      <td class="gt_row gt_right">0.2500</td>
+      <td class="gt_row gt_right">3.2</td>
+      <td class="gt_row gt_right">0.5</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">DE</td>
+      <td class="gt_row gt_center">51</td>
+      <td class="gt_row gt_right">0.2435</td>
+      <td class="gt_row gt_right">0.2396</td>
+      <td class="gt_row gt_right">3.3</td>
+      <td class="gt_row gt_right">0.4</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_left">LB</td>
+      <td class="gt_row gt_center">75</td>
+      <td class="gt_row gt_right">0.2288</td>
+      <td class="gt_row gt_right">0.2222</td>
+      <td class="gt_row gt_right">2.5</td>
+      <td class="gt_row gt_right">0.2</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_left">DE</td>
+      <td class="gt_row gt_center">51</td>
+      <td class="gt_row gt_right">0.1977</td>
+      <td class="gt_row gt_right">0.2069</td>
+      <td class="gt_row gt_right">2.5</td>
+      <td class="gt_row gt_right">0.4</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_left">DE</td>
+      <td class="gt_row gt_center">42</td>
+      <td class="gt_row gt_right">0.2117</td>
+      <td class="gt_row gt_right">0.2019</td>
+      <td class="gt_row gt_right">2.6</td>
+      <td class="gt_row gt_right">0.2</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_left">DT</td>
+      <td class="gt_row gt_center">45</td>
+      <td class="gt_row gt_right">0.1928</td>
+      <td class="gt_row gt_right">0.1974</td>
+      <td class="gt_row gt_right">2.2</td>
+      <td class="gt_row gt_right">0.2</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_left">TE</td>
+      <td class="gt_row gt_center">28</td>
+      <td class="gt_row gt_right">0.1767</td>
+      <td class="gt_row gt_right">0.1778</td>
+      <td class="gt_row gt_right">3.7</td>
+      <td class="gt_row gt_right">0.6</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_left">DT</td>
+      <td class="gt_row gt_center">52</td>
+      <td class="gt_row gt_right">0.2050</td>
+      <td class="gt_row gt_right">0.1767</td>
+      <td class="gt_row gt_right">2.2</td>
+      <td class="gt_row gt_right">0.2</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_left">WR</td>
+      <td class="gt_row gt_center">83</td>
+      <td class="gt_row gt_right">0.1982</td>
+      <td class="gt_row gt_right">0.1667</td>
+      <td class="gt_row gt_right">2.0</td>
+      <td class="gt_row gt_right">0.3</td>
+      <td class="gt_row gt_right">0.1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_left">DB</td>
+      <td class="gt_row gt_center">110</td>
+      <td class="gt_row gt_right">0.1676</td>
+      <td class="gt_row gt_right">0.1562</td>
+      <td class="gt_row gt_right">1.7</td>
+      <td class="gt_row gt_right">0.1</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_left">DB</td>
+      <td class="gt_row gt_center">116</td>
+      <td class="gt_row gt_right">0.1482</td>
+      <td class="gt_row gt_right">0.1304</td>
+      <td class="gt_row gt_right">1.4</td>
+      <td class="gt_row gt_right">0.1</td>
+      <td class="gt_row gt_right">0.0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3</td>
+      <td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">TE</td>
+      <td class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">38</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.1355</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.1111</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3.2</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.7</td>
+      <td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">0.1</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<p>This information as is gives you a good idea of how a team should think of the baselines and the averages regarding values of player positions, why specific positions at certain points in the draft are safer and others are riskier, and ideally would be the baseline of where any player evaluation starts, with the scouting report on a player layered on to this to move the expectation of how they will perform in their career up or down.</p>
+<p>In future analyses I would hope to get more into distributions within each position or round group, where teams should be wary of the biggest “bust” potential, and ways to “outcome proof” your draft strategy.</p>
+<p>Reach out to me on Twitter with any suggestions for future research or if you want to talk draft, looking forward to it, thanks for reading!</p>
+<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
+<p>Learn more about using Distill at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

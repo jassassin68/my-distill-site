@@ -1,0 +1,299 @@
+---
+title: "The NFL Draft: An Analysis of Player Value Outcomes by Round and Position"
+description: |
+  A look at the NFL draft, how career "value" post-draft is distributed historically by round and position, and some interesting storylines to follow for the NFL's big night in 2021
+author:
+  - name: "Jeff Asselin"
+    url: https://github.com/jassassin68/
+date: 04-28-2021
+categories:
+  - r
+  - sports
+  - nfl
+output:
+  distill::distill_article:
+    self_contained: false
+draft: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+The NFL draft is arguably the most exciting day of the NFL offseason for the league office, team organizations, players, and fans. The worst teams from the previous season have the most to gain (assuming they haven't traded away their extremely valuable picks well before draft day, which is on April 29th this year), as well as the highest potential of missing out on a franchise-altering player if they don't pick correctly; the best teams, although likely having lower potential value picks, need a strategy if they are going to maximize the output of their draft capital.
+
+A lot of analysis you will see leading up to draft day is related to scouting and analyzing how college players could measure up when they make the move to the pros, for the reasons I mentioned above: you want to know who has the best likelihood of succeeding in the NFL. The big questions this year go something like:
+
+  * Is Kyle Pitts, a TE, really worth a top 5 pick? 
+  * Should Devonta Smith or Jaylen Waddle be the first Alabama wide receiver selected this year, and why?
+  * IS Mac Jones an NFL-caliber quarterback, and if so how high is his "ceiling"? 
+  
+Teams and commentators understandably heavily weight scouting, finding comparable current NFL players for highly touted college players, and general player evaluation in regard to the plan when it comes to draft day. That being said, we have plenty of historical data to understand player outcomes once they have entered the league, and there is a ton of information to gain from taking a post-hoc approach to understanding draft performance, how certain rounds or positions should be viewed with a risk-reward lens, and identifying strategies to improve your team's stock where other teams may not have done their homework.
+
+I have not seen too much recent content on this type of analysis, which could just be getting drowned out by scouting reports, rumors, and trades, and everything else happening before Draft Day, which is understandable, but this type of analysis and content is important and should be a significant part of any Draft Day kit as well, so let's get into it!
+
+Below I'll share some ideas for understanding historical pick and positional value, explore past data to see if it can tell us anything about how teams should approach future drafts, and see if we can advise on any simple strategies teams could deploy that could help lead to better draft results.
+
+Always need to shout out someone in these posts: thanks to [Pranav Rajaram](https://twitter.com/_pranavrajaram), [Lee Sharpe](https://twitter.com/LeeSharpeNFL), and [Pro-Football-Reference](http://pro-football-reference.com/) for your work on NFL data, and the folks at [RStudio](https://www.rstudio.com/) for an amazing product.
+
+
+# Load Libraries
+
+```{r, echo=TRUE}
+library(tidyverse)
+library(ggplot2)
+library(gt)
+```
+
+# Read in your data
+
+```{r, echo=TRUE}
+
+player_av <- read_csv("https://raw.githubusercontent.com/pranavrajaram/nfldraft/main/pfravs.csv")
+
+```
+
+# Exploratory Visuals and Tables
+
+I have started with a scatterplot of all picks between 2000 and 2014, for all teams and positions, with pick number on the x-axis and career AV, also known as "approximate value" of a player for all games played in their career, on the y-axis, with a linear average line drawn through all picks.
+
+Looking at all picks in this simplified way, we can see that on average, the better the pick the higher the players career AV will be for this dataset.
+
+```{r, echo=TRUE}
+# All Players - Scatterplot - Career AV versus Pick Number
+p_scatter <- player_av %>%
+    filter(draft_year >= 2000, draft_year <= 2015) %>%
+    ggplot(aes(x=pick, y=career_av, color=pos_pfr)) + 
+    geom_point(size=2) +
+    geom_smooth(method=lm , color="black", se=FALSE)
+
+print(p_scatter)
+```
+
+Next, I looked at the same dataset but instead of a scatterplot I viewed it as boxplots, grouped by draft round, which shows the distribution of Career AV within each round for the years 2000 through 2015, with the biggest outliers labeled for reference.
+
+This view puts in perspective the anomaly that is Tom Brady.
+
+```{r, echo=TRUE}
+# All Players - Boxplot - Career AV Distribution - by Round
+p_box <- player_av %>%
+    filter(draft_year >= 2000, draft_year <= 2015) %>%
+    mutate(career_av = replace_na(career_av, 0)) %>%
+    ggplot(aes(y=career_av, x = round, group = round)) + 
+    geom_boxplot() + 
+    scale_x_discrete(limits=1:12, labels=1:12) +
+    geom_text(aes(group = round, label = ifelse(!between(career_av,-5.6*IQR(career_av), 5.6*IQR(career_av)), 
+                                                player,'')), 
+            position = position_dodge(width=0.75),
+            hjust = -.2, size = 3)
+
+print(p_box)
+
+```
+
+In a tabular view of the table, we can see some summary statistics around average and median Career AV per round, as well as average years as a starter, average Pro Bowls, and average years named All-Pro.
+
+```{r, echo=FALSE}
+gt_theme_538 <- function(data,...) {
+  data %>%
+  opt_all_caps()  %>%
+  opt_table_font(
+    font = list(
+      google_font("Chivo"),
+      default_fonts()
+    )
+  ) %>%
+    tab_style(
+      style = cell_borders(
+        sides = "bottom", color = "transparent", weight = px(2)
+      ),
+      locations = cells_body(
+        columns = TRUE,
+        # This is a relatively sneaky way of changing the bottom border
+        # Regardless of data size
+        rows = nrow(data$`_data`)
+      )
+    )  %>% 
+  tab_options(
+    column_labels.background.color = "white",
+    table.border.top.width = px(3),
+    table.border.top.color = "transparent",
+    table.border.bottom.color = "transparent",
+    table.border.bottom.width = px(3),
+    column_labels.border.top.width = px(3),
+    column_labels.border.top.color = "transparent",
+    column_labels.border.bottom.width = px(3),
+    column_labels.border.bottom.color = "black",
+    data_row.padding = px(3),
+    source_notes.font.size = 12,
+    table.font.size = 16,
+    heading.align = "left",
+    ...
+  ) 
+}
+```
+
+```{r, echo=TRUE}
+by_round_av_stats <- player_av %>%
+    filter(draft_year >= 2000, draft_year <= 2015) %>%
+    mutate(career_av = replace_na(career_av, 0),
+           games = replace_na(games, 0)) %>%
+    add_count(player) %>%
+  #  filter(career_av >= 0) %>%
+    group_by(round) %>%
+    summarise('player count' = sum(n),
+              'career av avg' = round(mean(career_av),1),
+          #    c_av_25th_tile = quantile(career_av, c(0.25)),
+              'career av median' = median(career_av),
+          #    c_av_75th_tile = quantile(career_av, c(0.75)),
+              'avg years starter' = round(mean(years_starter),1),
+              'avg pro bowls' = round(mean(pro_bowl),1),
+              'avg all pro' = round(mean(all_pro),1)) %>%
+  ungroup()
+
+by_round_av_stats %>%
+    gt() %>% 
+    gt_theme_538()
+
+```
+
+Next, I looked at the same view, except instead of Career AV overall I calculated "Career AV per game played", which normalizes AV to a per game average, which should allow for a better comparison regardless of where players are in their career progression.
+
+Andrew Luck and Patrick Willis stand out here, but make sense as outliers: they both retired near or at the height of their careers, so on a per game basis they retired with a very high "Career AV", as opposed to other Hall of Fame-worthy players who likely play until their per game AV begins to decline.
+
+```{r, echo=TRUE}
+# All Players - Boxplot - Career AV per Game Played Distribution - by Round
+p_pg_box <- player_av %>%
+    filter(draft_year >= 2000, draft_year <= 2015) %>%
+    mutate(career_av = replace_na(career_av, 0),
+           games = replace_na(games, 0)) %>%
+    filter(career_av >= 0) %>%
+    mutate(career_av_pg = round(career_av / games, 7)) %>%
+    mutate(career_av_pg = replace_na(career_av_pg,0)) %>%
+    ggplot(aes(y=career_av_pg, x = round, group = round)) + 
+    geom_boxplot() + 
+    scale_x_discrete(limits=1:7, labels=1:7) +
+    geom_text(aes(group = round, label = ifelse(!between(career_av_pg,-3.25*IQR(career_av_pg), 3.25*IQR(career_av_pg)), 
+                                                player,'')), 
+            position = position_dodge(width=0.75),
+            hjust = -.2, size = 3)
+
+print(p_pg_box)
+
+```
+
+And the tabular view of the same summary statistics as above are below:
+
+```{r, echo=TRUE}
+by_round_av_pg_stats <- player_av %>%
+    filter(draft_year >= 2000, draft_year <= 2015) %>%
+    mutate(career_av = replace_na(career_av, 0),
+           games = replace_na(games, 0)) %>%
+    filter(career_av >= 0) %>%
+    mutate(career_av_pg = round(career_av / games, 7),
+           career_av_pg = replace_na(career_av_pg,0)) %>%
+    add_count(player) %>%
+  #  filter(career_av >= 0) %>%
+    group_by(round) %>%
+    summarise('player count' = sum(n),
+              'career av per game avg' = round(mean(career_av_pg),4),
+          #    c_av_25th_tile = quantile(career_av, c(0.25)),
+              'career av pg median' = round(median(career_av_pg),4),
+          #    c_av_75th_tile = quantile(career_av, c(0.75)),
+              'avg years starter' = round(mean(years_starter),1),
+              'avg pro bowls' = round(mean(pro_bowl),1),
+              'avg all pro' = round(mean(all_pro),1)) %>%
+  ungroup()
+
+by_round_av_pg_stats %>%
+    gt() %>% 
+    gt_theme_538()
+
+```
+
+How about if we summarize by position? As you can see from the table below, positions with a proper sample and the highest 'Approximate value' per game are Tackle, Quarterback, Guard, and Center. This tells you that:
+  * These positions are vital to the success of your football team
+  * A team should heavily consider investing a significant amount of draft captial into these positions
+
+```{r, echo=TRUE}
+by_pos_av_pg_stats <- player_av %>%
+    filter(draft_year >= 2000, draft_year <= 2015) %>%
+    mutate(career_av = replace_na(career_av, 0),
+           games = replace_na(games, 0)) %>%
+    filter(career_av >= 0) %>%
+    mutate(career_av_pg = round(career_av / games, 7),
+           career_av_pg = replace_na(career_av_pg,0)) %>%
+    add_count(player) %>%
+  #  filter(career_av >= 0) %>%
+    group_by(pos_pfr) %>%
+    summarise(player_count = sum(n),
+              career_av_per_game_avg = round(mean(career_av_pg),4),
+          #    c_av_25th_tile = quantile(career_av, c(0.25)),
+              'career_av_pg_median' = round(median(career_av_pg),4),
+          #    c_av_75th_tile = quantile(career_av, c(0.75)),
+              'avg years starter' = round(mean(years_starter),1),
+              'avg pro bowls' = round(mean(pro_bowl),1),
+              'avg all pro' = round(mean(all_pro),1)) %>%
+    filter(player_count >= 12) %>%
+    ungroup()
+
+by_pos_av_pg_stats %>%
+  arrange(desc(career_av_per_game_avg)) %>%
+  gt() %>% 
+  gt_theme_538()
+
+```
+
+What if there are differences in terms of 'approximate value' outcomes within positions AND by round? The table below yields a ton of information (showing only the top 35 combinations by AV per game), here are some highlights:
+
+  * A 1st round QB, on average, has the highest per game 'approximate value' out of any draft round and position combination, followed by 1st round Ts, 1st round LBs, and 1st round RBs. This is certainly part of the reason why we have seen a QB taken 1st overall 8 out of the last 12 years, and is what is expected to happen this year with Trevor Lawrence as the consensus projected #1 overall pick.
+  * A 2nd round T or a 2nd round QB on average have higher per game 'approximate values' than a 1st round DT, WR, DB, or DE; this means if you are selecting one of these positions in the 1st round you better be sure to have a strong conviction that the player you are selecting is not average and is an upside outlier. Without that conviction, you are better off selecting a player of a different position (again looking at Chase, Waddle, and Smith, all projected top 12 picks, can you be sure they will be worth it?)
+  * A 1st round TE is 23rd in 'approximate value' per game ranking by draft round and position, and on average has a lower AV per game than a Center selected in the 4th round or a 3rd round RB. This makes all of the buzz around Kyle Pitts, and the fact that he is expected to go top 5, even more crazy. Any team willing to take that risk must be seeing only incredible things from every other angle in their scouting report, potentially with a plan to use him at a different position or multiple positions. Removing the scouting information from the equation and only looking at outcomes, this looks like a huge risk and a disaster waiting to happen, which is part of what makes the draft so exciting.
+
+```{r, echo=TRUE}
+by_round_and_pos_av_pg_stats <- player_av %>%
+    filter(draft_year >= 2000, draft_year <= 2015) %>%
+    mutate(career_av = replace_na(career_av, 0),
+           games = replace_na(games, 0)) %>%
+    filter(career_av >= 0) %>%
+    mutate(career_av_pg = round(career_av / games, 7),
+           career_av_pg = replace_na(career_av_pg,0)) %>%
+    add_count(player) %>%
+    group_by(round, pos_pfr) %>%
+    summarise(player_count = sum(n),
+              career_av_per_game_avg = round(mean(career_av_pg),4),
+          #    c_av_25th_tile = quantile(career_av, c(0.25)),
+              career_av_pg_median = round(median(career_av_pg),4),
+          #    c_av_75th_tile = quantile(career_av, c(0.75)),
+              'avg years starter' = round(mean(years_starter),1),
+              'avg pro bowls' = round(mean(pro_bowl),1),
+              'avg all pro' = round(mean(all_pro),1)) %>%
+    filter(player_count >= 12) %>%
+    ungroup() %>%
+    head(35)
+
+by_round_and_pos_av_pg_stats %>%
+  arrange(desc(career_av_pg_median)) %>%
+  gt() %>% 
+  gt_theme_538()
+
+```
+
+
+This information as is gives you a good idea of how a team should think of the baselines and the averages regarding values of player positions, why specific positions at certain points in the draft are safer and others are riskier, and ideally would be the baseline of where any player evaluation starts, with the scouting report on a player layered on to this to move the expectation of how they will perform in their career up or down. 
+
+In future analyses I would hope to get more into distributions within each position or round group, where teams should be wary of the biggest "bust" potential, and ways to "outcome proof" your draft strategy.  
+
+Reach out to me on Twitter with any suggestions for future research or if you want to talk draft, looking forward to it, thanks for reading!
+
+
+
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

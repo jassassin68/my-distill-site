@@ -7,7 +7,19 @@
     <description>Posts
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 17 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>The NFL Draft: An Analysis of Player Value Outcomes by Round and Position</title>
+      <dc:creator>Jeff Asselin</dc:creator>
+      <link>https://jeffreyasselin.netlify.app/posts/2021-04-28-the-nfl-draft-an-analysis-of-player-value-outcomes-by-round-and-position</link>
+      <description>A look at the NFL draft, how career "value" post-draft is distributed historically by round and position, and some interesting storylines to follow for the NFL's big night in 2021</description>
+      <category>r</category>
+      <category>sports</category>
+      <category>nfl</category>
+      <guid>https://jeffreyasselin.netlify.app/posts/2021-04-28-the-nfl-draft-an-analysis-of-player-value-outcomes-by-round-and-position</guid>
+      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jeffreyasselin.netlify.app/posts/2021-04-28-the-nfl-draft-an-analysis-of-player-value-outcomes-by-round-and-position/nfl-draft-2021-analysis-round-position-outcomes_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>College Football Data API with R</title>
       <dc:creator>Jeff Asselin</dc:creator>
