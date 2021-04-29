@@ -33,6 +33,8 @@ A lot of analysis you will see leading up to draft day is related to scouting an
   
 Teams and commentators understandably heavily weight scouting, finding comparable current NFL players for highly touted college players, and general player evaluation in regard to the plan when it comes to draft day. That being said, we have plenty of historical data to understand player outcomes once they have entered the league, and there is a ton of information to gain from taking a post-hoc approach to understanding draft performance, how certain rounds or positions should be viewed with a risk-reward lens, and identifying strategies to improve your team's stock where other teams may not have done their homework.
 
+The 'Approximate Value' calculation certainly has quirks and is not perfect, even by the creator's admission, but it is a way to compare 'value' of players against one another with a single number, which is perfect for an analysis in aggregate such as this. You can read more about 'Approximate Value' [here](https://www.pro-football-reference.com/blog/index37a8.html).
+
 I have not seen too much recent content on this type of analysis, which could just be getting drowned out by scouting reports, rumors, and trades, and everything else happening before Draft Day, which is understandable, but this type of analysis and content is important and should be a significant part of any Draft Day kit as well, so let's get into it!
 
 Below I'll share some ideas for understanding historical pick and positional value, explore past data to see if it can tell us anything about how teams should approach future drafts, and see if we can advise on any simple strategies teams could deploy that could help lead to better draft results.
