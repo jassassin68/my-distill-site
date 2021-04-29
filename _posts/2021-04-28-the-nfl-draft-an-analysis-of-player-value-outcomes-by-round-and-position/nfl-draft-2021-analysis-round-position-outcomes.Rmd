@@ -1,7 +1,7 @@
 ---
 title: "The NFL Draft: An Analysis of Player Value Outcomes by Round and Position"
 description: |
-  A look at the NFL draft, how career "value" post-draft is distributed historically by round and position, and some interesting storylines to follow for the NFL's big night in 2021
+  A look at the NFL draft, how career value is distributed historically by draft round and player position, and some interesting storylines to follow for the NFL's big night in 2021
 author:
   - name: "Jeff Asselin"
     url: https://github.com/jassassin68/
@@ -29,7 +29,7 @@ A lot of analysis you will see leading up to draft day is related to scouting an
 
   * Is Kyle Pitts, a TE, really worth a top 5 pick? 
   * Should Devonta Smith or Jaylen Waddle be the first Alabama wide receiver selected this year, and why?
-  * IS Mac Jones an NFL-caliber quarterback, and if so how high is his "ceiling"? 
+  * Is Mac Jones an NFL-caliber quarterback, and if so how high is his "ceiling"? 
   
 Teams and commentators understandably heavily weight scouting, finding comparable current NFL players for highly touted college players, and general player evaluation in regard to the plan when it comes to draft day. That being said, we have plenty of historical data to understand player outcomes once they have entered the league, and there is a ton of information to gain from taking a post-hoc approach to understanding draft performance, how certain rounds or positions should be viewed with a risk-reward lens, and identifying strategies to improve your team's stock where other teams may not have done their homework.
 
@@ -215,6 +215,7 @@ by_round_av_pg_stats %>%
 ```
 
 How about if we summarize by position? As you can see from the table below, positions with a proper sample and the highest 'Approximate value' per game are Tackle, Quarterback, Guard, and Center. This tells you that:
+
   * These positions are vital to the success of your football team
   * A team should heavily consider investing a significant amount of draft captial into these positions
 
