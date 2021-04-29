@@ -1,7 +1,7 @@
 ---
 title: "The NFL Draft: An Analysis of Player Value Outcomes by Round and Position"
 description: |
-  A look at the NFL draft, how career value is distributed historically by draft round and player position, and some interesting storylines to follow for the NFL's big night in 2021
+  A look at the NFL draft, how career value is distributed historically by draft round and player position, and some interesting storylines to follow for the NFL's big night
 author:
   - name: "Jeff Asselin"
     url: https://github.com/jassassin68/
@@ -217,7 +217,7 @@ by_round_av_pg_stats %>%
 How about if we summarize by position? As you can see from the table below, positions with a proper sample and the highest 'Approximate value' per game are Tackle, Quarterback, Guard, and Center. This tells you that:
 
   * These positions are vital to the success of your football team
-  * A team should heavily consider investing a significant amount of draft captial into these positions
+  * A team should heavily consider investing a significant amount of draft captial into these positions given the importance of these positions to the success of your team
 
 ```{r, echo=TRUE}
 by_pos_av_pg_stats <- player_av %>%
@@ -252,7 +252,7 @@ What if there are differences in terms of 'approximate value' outcomes within po
 
   * A 1st round QB, on average, has the highest per game 'approximate value' out of any draft round and position combination, followed by 1st round Ts, 1st round LBs, and 1st round RBs. This is certainly part of the reason why we have seen a QB taken 1st overall 8 out of the last 12 years, and is what is expected to happen this year with Trevor Lawrence as the consensus projected #1 overall pick.
   * A 2nd round T or a 2nd round QB on average have higher per game 'approximate values' than a 1st round DT, WR, DB, or DE; this means if you are selecting one of these positions in the 1st round you better be sure to have a strong conviction that the player you are selecting is not average and is an upside outlier. Without that conviction, you are better off selecting a player of a different position (again looking at Chase, Waddle, and Smith, all projected top 12 picks, can you be sure they will be worth it?)
-  * A 1st round TE is 23rd in 'approximate value' per game ranking by draft round and position, and on average has a lower AV per game than a Center selected in the 4th round or a 3rd round RB. This makes all of the buzz around Kyle Pitts, and the fact that he is expected to go top 5, even more crazy. Any team willing to take that risk must be seeing only incredible things from every other angle in their scouting report, potentially with a plan to use him at a different position or multiple positions. Removing the scouting information from the equation and only looking at outcomes, this looks like a huge risk and a disaster waiting to happen, which is part of what makes the draft so exciting.
+  * A 1st round TE is 23rd in 'approximate value' per game ranking by draft round and position, and on average has a lower AV per game than a Center selected in the 4th round or a 3rd round RB. This makes all of the buzz around Kyle Pitts, and the fact that he is expected to go top 5, even more crazy. Any team willing to take that risk must be seeing only incredible things from every other angle in their scouting report, potentially with a plan to use him at a different position or multiple positions. Removing the scouting information from the equation and only looking at outcomes, this looks like a huge risk and a disaster waiting to happen, which is part of what makes draft night so exciting.
 
 ```{r, echo=TRUE}
 by_round_and_pos_av_pg_stats <- player_av %>%
