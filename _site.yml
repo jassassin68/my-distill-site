@@ -9,6 +9,7 @@ collections:
     categories: true
     categories_metadata: true
     authors_metadata: true
+google_analytics: "G-JWGKXDKSYB"
 navbar:
   right:
     - text: "Home"
